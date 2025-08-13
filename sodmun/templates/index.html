@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>SODMUN</title>
+          <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/sodlogo.png') }}">
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/fontAwesome.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/light-box.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-style.css') }}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+        <script src="{{ url_for('static', filename='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
+    </head>
+
+<body style="background-color: #1f1f1f;">
+
+    <nav>
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='img/sodlogo.png') }}" alt="Desert MUN Network Logo" />
+               SOD<em>MUN</em></a>
+            
+        </div>
+        <div class="menu-icon">
+        <span></span>
+      </div>
+    </nav>
+
+<!-- Bootstrap 5 CDN -->
+
+<!-- Hero Section -->
+<section class="vh-100 d-flex align-items-center text-white text-center" 
+style="height: 400px;
+    background: url({{ url_for('static', filename='secteamimg/bgimg.png') }}) no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;">
+  <div class="container">
+    <h1 class="display-4 fw-bold" style="font-size: 48px;">WELCOME TO <span class="fw-light">SUMMIT OF DIPLOMACY MUN</span></h1>
+    <p class="lead mt-3" style="font-size: 20px; max-width: 800px; margin: 20px auto;">SODMUN III will take place from October 17–19, 2025.</p>
+    <p style="font-size: 18px; max-width: 800px; margin: 20px auto;">With over 500 participants, SODMUN is the Largest Private Teen-Led MUN Conference in the MENA Region… possibly the world!</p>
+    <p style="font-size: 18px; max-width: 800px; margin: 20px auto;">This website is packed with resources for delegates, chairs, and secretariat members participating in SODMUN.</p>
+    <p class="mt-4" style="font-size: 18px; max-width: 800px; margin: 20px auto;">Scroll down to see the updates!</p>
+      <div class="scroll-icon mt-5">
+      <a class="scrollTo" data-scrollTo="portfolio" href="#portfolio">
+        <img src="{{ url_for('static', filename='img/scroll-icon.png') }}" alt="Scroll Down" style="width: 40px;">
+      </a>
+    </div>
+    <!-- Countdown Section -->
+<section class="py-5 text-white text-center">
+  <div class="container">
+    <h2 class="display-4 fw-bold" style="font-size: 20px;">Countdown to SODMUN III</h2>
+    <div class="d-flex justify-content-center gap-4 fs-5 fw-medium text-uppercase">
+      <div>
+        <div id="days" class="fs-1 fw-bold">00</div>
+        <small>Days</small>
+      </div>
+      <div>
+        <div id="hours" class="fs-1 fw-bold">00</div>
+        <small>Hours</small>
+      </div>
+      <div>
+        <div id="minutes" class="fs-1 fw-bold">00</div>
+        <small>Minutes</small>
+      </div>
+      <div>
+        <div id="seconds" class="fs-1 fw-bold">00</div>
+        <small>Seconds</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Countdown Script -->
+<script>
+  const updateCountdown = () => {
+    const targetDate = new Date("October 17, 2025 00:00:00").getTime();
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById("days").textContent = days.toString().padStart(2, '0');
+    document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+    document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+    document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
+  };
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+  </div>
+
+                          
+</section>
+
+<!-- Announcements Section -->
+<section class="py-5 bg-dark text-white text-center" id="portfolio">
+  <div class="container">
+    <h2 class="display-5 fw-bold mb-4">Chair Applications Out Now!</h2>
+    <a href="https://forms.gle/SXVGh2Gdc8JCsAfV7" class="btn btn-lg btn-primary px-4 py-2 apply-now-btn" style="border-radius: 40px;">Apply Now</a>
+
+            <style>
+  .apply-now-btn {
+    background: linear-gradient(135deg, #ffa600, #8e4500);
+    color: #0b1120;
+    border: none;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 1.25rem;
+    box-shadow: 0 10px 25px rgba(255, 162, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .apply-now-btn:hover {
+    transform: scale(1.06);
+    box-shadow: 0 12px 30px rgba(255, 140, 0, 0.45);
+    text-decoration: none;
+    color: #0b1120;
+  }
+</style>
+
+
+<div class="mt-5">
+  <h2 class="display-6 fw-bold mb-4">Delegate Applications Out Soon...</h2>
+  <!-- <a href="https://forms.gle/SXVGh2Gdc8JCsAfV7" class="btn btn-lg btn-primary px-4 py-2 
+   apply-now-btn" style="border-radius: 40px;">Apply Now</a>
+  -->
+</div>
+
+<!-- Sponsor Section -->
+<div class="mt-5 text-center py-4" style="background-color: #292929; border-radius: 12px;">
+  <h3 class="fw-semibold mb-3">Sponsors</h3> <h4> Coming Soon...</h4>
+  <div class="d-flex justify-content-center align-items-center flex-wrap gap-4">
+    <!-- <img src="img/sodlogo.png" alt="SOD Sponsor Logo" style="max-width: 200px; width: 100%; height: auto;">
+    <img src="img/sodlogo.png" alt="SOD Sponsor Logo" style="max-width: 200px; width: 100%; height: auto;">
+    <img src="img/sodlogo.png" alt="SOD Sponsor Logo" style="max-width: 200px; width: 100%; height: auto;"> -->
+    
+  </div>
+</div>
+
+
+  </div> 
+</section>
+
+
+
+
+
+
+
+ <footer>
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <p>Copyright &copy; 2025 SODMUN
+    
+    | Designed by Aarav Mamtani</p>
+            </div>
+        </div>
+    </footer>
+
+
+<!-- ✅ Required Bootstrap 5 JS (Make sure this is at the bottom of your page) -->
+
+
+
+    
+
+    <section class="overlay-menu">
+      <div class="container">
+        <div class="row">
+          <div class="main-menu">
+              <ul>
+                  <li>
+                      <a href="{{ url_for('index') }}">Home </a>
+                  </li>
+                  <li>
+                      <a href="{{ url_for('about') }}">About Us</a>
+                  </li>
+                    <li>
+                    <a href="{{ url_for('incubator') }}">Incubator Program</a>
+                </li>
+                  <li>
+                      <a href="{{ url_for('secretariat') }}">Secretariat</a>
+                  </li>
+                  <li>
+                      <a href="{{ url_for('committees') }}">Committees</a>
+                  </li>
+                  <li>
+                    <a href="{{ url_for('contact') }}">Contact Us</a>
+                </li>
+                  
+                 
+              </ul>
+              <p>We create the best Model UN Experiences for you | Summit of Diplomacy Model UN</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+      if (!window.jQuery) {
+        var script = document.createElement('script');
+        script.src = "{{ url_for('static', filename='js/vendor/jquery-1.11.2.min.js') }}";
+        document.head.appendChild(script);
+      }
+    </script>
+
+    <script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js') }}"></script>
+    
+    <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    
+</body>
+</html>

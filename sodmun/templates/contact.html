@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>SODMUN</title>
+          <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/sodlogo.png') }}">
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/fontAwesome.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/light-box.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-style.css') }}">
+
+        <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+        <script src="{{ url_for('static', filename='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
+    </head>
+
+<body style="background-color: #1f1f1f;">
+
+    <nav>
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='img/sodlogo.png') }}" alt="Logo" />
+               SOD<em>MUN</em></a>
+            
+        </div>
+        <div class="menu-icon">
+        <span></span>
+      </div>
+    </nav>
+
+<!-- CONTACT SECTION -->
+<!-- CONTACT SECTION -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+  .contact-image {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto 40px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .contact-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+  }
+</style>
+
+<div class="full-screen-portfolio" id="contact" style="background-color: #1f1f1f; color: white; padding: 120px 0 60px 0;">
+  <div class="container text-center">
+    <h2 style="font-size: 48px; margin-bottom: 20px;">Get in Touch</h2>
+    <p style="font-size: 18px; color: #ccc; margin-bottom: 40px;">
+      Have questions, suggestions, or want to collaborate with us? Reach out below!
+    </p>
+
+    <!-- IMAGE PLACEHOLDER WITH HOVER -->
+    <img src="{{ url_for('static', filename='img/DSC_1249.JPG') }}" alt="SODMUN" class="contact-image">
+
+    <!-- CONTACT INFO -->
+    <div style="font-size: 20px;">
+      <p style="margin-bottom: 15px;">
+        <i class="fas fa-envelope" style="color: #f2b632; margin-right: 10px;"></i>
+        <a href="mailto:sg.sodmun@gmail.com" style="color: white; text-decoration: underline;">sg.sodmun@gmail.com</a>
+      </p>
+           <p style="margin-bottom: 15px;">
+        <i class="fas fa-envelope" style="color: #f2b632; margin-right: 10px;"></i>
+        <a href="mailto:sg.sodmun@gmail.com" style="color: white; text-decoration: underline;">vishesh@sodmun.com</a>
+      </p>
+      <p>
+        <i class="fab fa-instagram" style="color: #f26bce; margin-right: 10px;"></i>
+        <a href="https://www.instagram.com/sod.mun" target="_blank" style="color: white; text-decoration: underline;">@sod.mun</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+
+            
+            
+           
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <p>Copyright &copy; 2025 SODMUN
+    
+    | Designed by Aarav Mamtani</p>
+            </div>
+        </div>
+    </footer>
+
+
+      <!-- Modal button -->
+    <div class="popup-icon">
+      <button id="modBtn" class="modal-btn"><img src="{{ url_for('static', filename='img/contact-icon.png') }}" alt=""></button>
+    </div>  
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+      <!-- Modal Content -->
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h3 class="header-title">Say hello to <em> the SOD MUN Network</em></h3>
+          <div class="close-btn"><img src="{{ url_for('static', filename='img/close_contact.png') }}" alt=""></div>    
+        </div>
+        <!-- Modal Body -->
+      <div class="modal-body">
+  <div class="col-md-6 col-md-offset-3">
+    <form id="contact" action="https://formspree.io/f/xnnzjeqy" method="POST">
+      <!-- Redirect back to same page after submission -->
+      <input type="hidden" name="_redirect" value="{{ url_for('contact') }}">
+
+      <div class="row">
+        <div class="col-md-12">
+          <fieldset>
+            <input name="name" type="text" class="form-control" id="name" placeholder="Your name..." required="">
+          </fieldset>
+        </div>
+        <div class="col-md-12">
+          <fieldset>
+            <input name="email" type="email" class="form-control" id="email" placeholder="Your email..." required="">
+          </fieldset>
+        </div>
+        <div class="col-md-12">
+          <fieldset>
+            <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
+          </fieldset>
+        </div>
+        <div class="col-md-12">
+          <fieldset>
+            <button type="submit" id="form-submit" class="btn">Send Message Now</button>
+          </fieldset>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    
+
+    <section class="overlay-menu">
+      <div class="container">
+        <div class="row">
+          <div class="main-menu">
+              <ul>
+                                    <li>
+                      <a href="{{ url_for('index') }}">Home </a>
+                  </li>
+                  <li>
+                      <a href="{{ url_for('about') }}">About Us</a>
+                  </li>
+                    <li>
+                    <a href="{{ url_for('incubator') }}">Incubator Program</a>
+                </li>
+                  <li>
+                      <a href="{{ url_for('secretariat') }}">Secretariat</a>
+                  </li>
+                  <li>
+                      <a href="{{ url_for('committees') }}">Committees</a>
+                  </li>
+                  <li>
+                    <a href="{{ url_for('contact') }}">Contact Us</a>
+                </li>
+                  
+                  
+                 
+              </ul>
+              <p>We create the best Model UN Experiences for you | Summit of Diplomacy Model UN</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+      if (!window.jQuery) {
+        var script = document.createElement('script');
+        script.src = "{{ url_for('static', filename='js/vendor/jquery-1.11.2.min.js') }}";
+        document.head.appendChild(script);
+      }
+    </script>
+
+    <script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js') }}"></script>
+    
+    <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+    
+</body>
+</html>
