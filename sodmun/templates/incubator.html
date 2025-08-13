@@ -74,11 +74,12 @@
         <nav>
         <div class="logo">
             <a href="{{ url_for('index') }}">
-                <img src="{{ url_for('static', filename='img/sodlogo.png') }}" alt="Desert MUN Network Logo" />
+                <img src="{{ url_for('static', filename='img/sodlogo.png') }}" alt="Logo" />
                SOD<em>MUN</em></a>
-            
         </div>
- 
+        <div class="menu-icon">
+        <span></span>
+      </div>
     </nav>
 
   <div class="coming-soon">
@@ -148,17 +149,18 @@
     </section>
 
 
-  <!-- Scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      $('#modBtn').click(function () {
-        $('#modal').fadeIn();
-      });
-      $('.close-btn').click(function () {
-        $('#modal').fadeOut();
-      });
-    });
-  </script>
+    <script>
+      if (!window.jQuery) {
+        var script = document.createElement('script');
+        script.src = "{{ url_for('static', filename='js/vendor/jquery-1.11.2.min.js') }}";
+        document.head.appendChild(script);
+      }
+    </script>
+
+    <script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js') }}"></script>
+    
+    <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
