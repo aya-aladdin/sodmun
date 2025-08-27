@@ -37,10 +37,10 @@
 
    
 
-<!-- CREATE COMMITTEE HTMLs -- LIKE ga1.html, unsc.html etc under /comms SCRATCH THAT JUST DO COMMITTEES.html--> 
+
     <div class="full-screen-portfolio" id="portfolio">
         <div class="container-fluid">
-      <!-- Committees Section -->
+      
 <div class="committees-section" style="background-color: #0b1120; color: white; padding: 30px 5px;">
   <div class="container">
     <div class="inner" style="text-align: center; margin-bottom: 20px;">
@@ -67,7 +67,7 @@
     transform: scale(1.05);
   }
 
-  /* iPhone and small screen optimization */
+  
   @media only screen and (max-width: 500px) {
     .sodmun-resource-button {
       font-size: 14px;
@@ -88,10 +88,10 @@
     </div>
 
 
-    <!-- Committee Card -->
+    
     <div class="row">
 <p style="text-align: center;"> Please note that the below 'download resources' button wont work right now as the background guides are not public / made</p>
-      <!-- Example Committee Card -->
+      
       <div class="col-md-4 col-sm-6">
         <div class="committee-card" style="background-color: #47474700; padding: 20px; margin-bottom: 30px; border-radius: 10px; text-align: center;">
           <img src="{{ url_for('static', filename='my-img/ga1.png') }}" alt="GA1" style="width: 100%; border-radius: 8px;">
@@ -103,7 +103,7 @@
         </div>
       </div>
 
-      <!-- Repeat this block for other committees -->
+      
       <div class="col-md-4 col-sm-6">
         <div class="committee-card" style="background-color: #16203200; padding: 20px; margin-bottom: 30px; border-radius: 10px; text-align: center;">
           <img src="{{ url_for('static', filename='my-img/sc.png') }}" alt="Security Council" style="width: 100%; border-radius: 8px;">
@@ -244,7 +244,7 @@
           <a href="#" style="color: #00BFFF; text-decoration: underline;">Download Resources</a>
         </div>
       </div>
-      <!-- Add more committee cards as needed -->
+      
 
     
   </div>
@@ -269,25 +269,25 @@
     </footer>
 
 
-      <!-- Modal button -->
+      
     <div class="popup-icon">
       <button id="modBtn" class="modal-btn"><img src="{{ url_for('static', filename='img/contact-icon.png') }}" alt=""></button>
     </div>  
 
-    <!-- Modal -->
+    
     <div id="modal" class="modal">
-      <!-- Modal Content -->
+      
       <div class="modal-content">
-        <!-- Modal Header -->
+        
         <div class="modal-header">
           <h3 class="header-title">Say hello to <em> the SOD MUN Network</em></h3>
           <div class="close-btn"><img src="{{ url_for('static', filename='img/close_contact.png') }}" alt=""></div>    
         </div>
-        <!-- Modal Body -->
+        
       <div class="modal-body">
   <div class="col-md-6 col-md-offset-3">
     <form id="contact" action="https://formspree.io/f/xnnzjeqy" method="POST">
-      <!-- Redirect back to same page after submission -->
+      
       <input type="hidden" name="_redirect=index.html" value="index.html">
 
       <div class="row">

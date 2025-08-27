@@ -7,7 +7,6 @@ body::-webkit-scrollbar {
   height: 8px;
   background-color: rgba(0, 0, 0, 0.9);
 }
-/* Add a thumb */
 body::-webkit-scrollbar-thumb {
     background: rgba(250, 250, 250, 0.5);
 }
@@ -17,6 +16,8 @@ body, html {
   min-height: 100%;
   overflow-x: hidden;
 }
+
+
 
 
 .page-heading {
@@ -47,7 +48,6 @@ body, html {
 
 
 
-/* Nav Bar */
 
 nav .logo {
   float: left;
@@ -85,8 +85,8 @@ nav {
 }
 
 .logo img {
-  height: 50px; /* Adjust the height as needed */
-  margin-right: 10px; /* Space between image and text */
+  height: 50px; 
+  margin-right: 10px; 
 }
 
 .menu-icon {
@@ -147,7 +147,6 @@ nav {
 .menu-icon.active span:after {
   transform: rotate(-135deg);
 }
-/* Menu */
 
 .overlay-menu {
   background: rgba(0, 0, 0, 0.95);
@@ -323,18 +322,17 @@ nav {
 }
 
 
-/* Enhanced Portfolio Item Styles */
 .portfolio-item .thumb {
   position: relative;
-  overflow: hidden; /* Ensure image scaling doesn't break layout */
+  overflow: hidden; 
 }
 
 .portfolio-item .image img {
-  transition: transform 0.5s ease; /* Smooth transition for image scaling */
+  transition: transform 0.5s ease; 
 }
 
 .portfolio-item:hover .image img {
-  transform: scale(1.05); /* Scale image up slightly on hover */
+  transform: scale(1.05); 
 }
 
 .portfolio-item .hover-effect {
@@ -343,49 +341,48 @@ nav {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
-  opacity: 0; /* Start hidden */
-  transition: opacity 0.5s ease; /* Smooth transition for overlay */
-  display: flex; /* Use flexbox for centering content */
-  align-items: flex-end; /* Align content to the bottom */
-  justify-content: flex-start; /* Align content to the left */
-  padding: 20px; /* Add padding inside the overlay */
+  background-color: rgba(0, 0, 0, 0.5); 
+  opacity: 0; 
+  transition: opacity 0.5s ease; 
+  display: flex; 
+  align-items: flex-end; 
+  justify-content: flex-start; 
+  padding: 20px; 
 }
 
 .portfolio-item:hover .hover-effect {
-  opacity: 1; /* Show overlay on hover */
+  opacity: 1; 
 }
 
 .portfolio-item .hover-content {
-    /* Keep existing styles, but ensure they work with flexbox */
-    width: 100%; /* Ensure content takes full width of overlay */
+    
+    width: 100%; 
     text-align: left;
-    /* Remove absolute positioning as flexbox handles it */
+    
     bottom: auto;
     left: auto;
 }
 
-/* Adjust h1 within hover-content */
+
 .full-screen-portfolio .portfolio-item h1 {
-  /* Keep existing styles */
-  transform: translateY(0); /* Always show h1, or adjust for a different animation */
-  transition: none; /* Remove previous transition as it's now part of overlay transition */
-  font-size: 24px; /* Slightly larger for better visibility */
+  
+  transform: translateY(0); 
+  transition: none; 
+  font-size: 24px; 
 }
 
 .full-screen-portfolio .portfolio-item:hover h1 {
-  /* No specific hover transform needed if always visible */
+  
 }
 
-/* Remove unused p styles */
+
 .full-screen-portfolio .portfolio-item p {
-  display: none; /* Hide the empty p tags */
+  display: none; 
 }
 
 .full-screen-portfolio .portfolio-item:hover p {
-  display: none; /* Hide the empty p tags */
+  display: none; 
 }
-
 
 
 
@@ -411,7 +408,6 @@ nav {
   height: 60px;
 }
 
-/* Modal */
 .modal {
   background-color: rgba(0,0,0,.95);
   display: none;
@@ -430,7 +426,6 @@ nav {
   display: none;
 }
 
-/* Modal Content */
 .modal-content {
   text-align: center;
   position: relative;
@@ -541,7 +536,7 @@ nav {
   outline: none;
 }
 
-/* Keyframes */
+
 @keyframes totop-in {
   0% {
     top: 600px;
@@ -938,7 +933,7 @@ footer a:hover {
   background-color: transparent;
   color: #f4dd5b;
   letter-spacing: 2px;
-  border-bottom: 3px solid #f4dd5b;
+  border-bottom: 3px solid #fff;
   padding-bottom: 3px;
   text-decoration: none;
   transition: all 0.5s;
@@ -1356,18 +1351,17 @@ footer a:hover {
 
 }
 
-/* --- Responsive Styles --- */
 
 @media (max-width: 768px) {
 
-  /* Page Heading */
+  
   .page-heading .heading-content h1 {
     margin-top: 120px;
     font-size: 24px;
     padding: 15px 30px;
   }
 
-  /* Services */
+  
   .services .service-item {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -1376,7 +1370,7 @@ footer a:hover {
     border-radius: 5px;
   }
 
-  /* More About Us */
+  
   .more-about-us .content {
     padding: 60px 30px;
   }
@@ -1385,7 +1379,7 @@ footer a:hover {
     font-size: 28px;
   }
 
-  /* Typography */
+  
   h1, .h1 {
     font-size: 30px;
   }
@@ -1471,19 +1465,19 @@ footer a:hover {
     font-size: 15px;
   }
 }
-/* ========== GENERAL RESPONSIVENESS ========== */
+
 body, html {
   overflow-x: hidden;
 }
 
-/* ========== IMAGE CONTAINERS ========== */
+
 .portfolio-item img {
   width: 100%;
   height: auto;
   display: block;
 }
 
-/* ========== RESPONSIVE GRID FIX ========== */
+
 @media (max-width: 767px) {
   .col-md-4, .col-sm-6 {
     width: 100% !important;
@@ -1523,7 +1517,7 @@ body, html {
   }
 }
 
-/* ========== MODAL MOBILE FIX ========== */
+
 .modal {
   position: fixed;
   top: 0;
@@ -1545,9 +1539,9 @@ body, html {
   max-width: 500px;
 }
 
-/* Secretariat Page Specific Styles */
+
 .secretariat-heading {
-  background-image: url(../secteamimg/bgimg.png); /* Using the image from secteamimg */
+  background-image: url(../secteamimg/bgimg.png); 
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -1563,7 +1557,7 @@ body, html {
   background-color: rgba(32, 32, 32, 0.869);
   display: inline-block;
   margin-bottom: 0;
-  margin-top: 220px; /* Keep consistent with page-heading for now, adjust later if needed */
+  margin-top: 220px; 
   padding: 20px 60px;
 }
 
@@ -1572,12 +1566,12 @@ body, html {
   font-weight: 200;
 }
 
-/* Add padding to portfolio items for spacing */
+
 .full-screen-portfolio .portfolio-item {
-  padding: 10px; /* Add some padding around each image */
+  padding: 10px; 
 }
 
-/* Adjust column padding within the container for consistent spacing */
+
 .full-screen-portfolio .container .col-md-4,
 .full-screen-portfolio .container .col-sm-6 {
   padding-left: 5px;

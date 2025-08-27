@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  		<title>SODMUN</title>
+      <title>SODMUN</title>
           <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/sodlogo.png') }}">
 
         <meta name="description" content="">
@@ -18,8 +18,95 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
         <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
         <script src="{{ url_for('static', filename='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
+        <style>
+            .calendar-container {
+                font-family: 'Inter', sans-serif;
+                background-color: rgba(31, 31, 31, 0.7);
+                color: #fff;
+                padding: 20px;
+                border-radius: 12px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+                max-width: 400px;
+                width: 100%;
+                margin: 20px;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+            }
+            .calendar-header {
+                font-size: 1.5rem;
+                font-weight: 700;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+            .calendar-days {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                text-align: center;
+                font-weight: 500;
+                margin-bottom: 10px;
+            }
+            .calendar-dates {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                gap: 8px;
+                text-align: center;
+            }
+            .calendar-dates > div {
+                padding: 10px;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+            .calendar-dates > div:hover:not(.empty-date):not(.highlighted-date) {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+            .empty-date {
+                visibility: hidden;
+            }
+            .highlighted-date {
+                background-color: #ffa600;
+                font-weight: 700;
+                position: relative;
+                color: #fff;
+            }
+            .highlighted-date::after {
+                content: '';
+                position: absolute;
+                bottom: 4px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 6px;
+                height: 6px;
+                background-color: #fff;
+                border-radius: 50%;
+            }
+
+            @media (max-width: 991px) {
+                .main-content-flex {
+                    flex-direction: column;
+                    align-items: center !important;
+                }
+                .main-content-text, .calendar-column {
+                    width: 100% !important;
+                }
+                .main-content-text {
+                    text-align: center;
+                    margin-bottom: 40px;
+                }
+                .main-content-text p {
+                    text-align: center;
+                }
+            }
+            
+            .main-content-text h1, .main-content-text p {
+                text-align: left;
+            }
+            
+        </style>
     </head>
 
 <body style="background-color: #1f1f1f;">
@@ -36,10 +123,7 @@
       </div>
     </nav>
 
-<!-- Bootstrap 5 CDN -->
-
-<!-- Hero Section -->
-<section class="vh-100 d-flex align-items-center text-white text-center" 
+<section class="vh-100 d-flex align-items-center text-white" 
 style="height: 400px;
     background: url({{ url_for('static', filename='secteamimg/bgimg.png') }}) no-repeat center center;
     background-size: cover;
@@ -47,69 +131,64 @@ style="height: 400px;
     align-items: center;
     justify-content: center;
     margin-top: 80px;">
-  <div class="container">
-    <h1 class="display-4 fw-bold" style="font-size: 48px;">WELCOME TO <span class="fw-light">SUMMIT OF DIPLOMACY MUN</span></h1>
-    <p class="lead mt-3" style="font-size: 20px; max-width: 800px; margin: 20px auto;">SODMUN III will take place from October 17–19, 2025.</p>
-    <p style="font-size: 18px; max-width: 800px; margin: 20px auto;">With over 500 participants, SODMUN is the Largest Private Teen-Led MUN Conference in the MENA Region… possibly the world!</p>
-    <p style="font-size: 18px; max-width: 800px; margin: 20px auto;">This website is packed with resources for delegates, chairs, and secretariat members participating in SODMUN.</p>
-    <p class="mt-4" style="font-size: 18px; max-width: 800px; margin: 20px auto;">Scroll down to see the updates!</p>
-      <div class="scroll-icon mt-5">
-      <a class="scrollTo" data-scrollTo="portfolio" href="#portfolio">
-        <img src="{{ url_for('static', filename='img/scroll-icon.png') }}" alt="Scroll Down" style="width: 40px;">
-      </a>
+  
+    <div class="container d-flex justify-content-between align-items-start main-content-flex">
+        
+        <div class="main-content-text w-50">
+            <h1 class="display-4 fw-bold" style="font-size: 48px;">WELCOME TO <span class="fw-light">SUMMIT OF DIPLOMACY MUN</span></h1>
+            <p class="lead mt-3" style="font-size: 20px;">SODMUN III will take place from October 17–19, 2025.</p>
+            <p style="font-size: 18px;">With over 500 participants, SODMUN is the Largest Private Teen-Led MUN Conference in the MENA Region… possibly the world!</p>
+            <p style="font-size: 18px;">This website is packed with resources for delegates, chairs, and secretariat members participating in SODMUN.</p>
+            <p class="mt-4" style="font-size: 18px;">Scroll down to see the updates!</p>
+            
+            <div class="scroll-icon mt-5">
+                <a class="scrollTo" data-scrollTo="portfolio" href="#portfolio">
+                    <img src="{{ url_for('static', filename='img/scroll-icon.png') }}" alt="Scroll Down" style="width: 40px;">
+                </a>
+            </div>
+            
+            <section class="py-5 text-white">
+                <h2 class="display-4 fw-bold" style="font-size: 20px;">Countdown to SODMUN III</h2>
+                <div class="d-flex gap-4 fs-5 fw-medium text-uppercase">
+                    <div>
+                        <div id="days" class="fs-1 fw-bold">00</div>
+                        <small>Days</small>
+                    </div>
+                    <div>
+                        <div id="hours" class="fs-1 fw-bold">00</div>
+                        <small>Hours</small>
+                    </div>
+                    <div>
+                        <div id="minutes" class="fs-1 fw-bold">00</div>
+                        <small>Minutes</small>
+                    </div>
+                    <div>
+                        <div id="seconds" class="fs-1 fw-bold">00</div>
+                        <small>Seconds</small>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="calendar-column w-40 d-flex justify-content-center">
+            <div class="calendar-container">
+                <div class="calendar-header">October 2025</div>
+                <div class="calendar-days">
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                </div>
+                <div class="calendar-dates" id="calendarDates">
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- Countdown Section -->
-<section class="py-5 text-white text-center">
-  <div class="container">
-    <h2 class="display-4 fw-bold" style="font-size: 20px;">Countdown to SODMUN III</h2>
-    <div class="d-flex justify-content-center gap-4 fs-5 fw-medium text-uppercase">
-      <div>
-        <div id="days" class="fs-1 fw-bold">00</div>
-        <small>Days</small>
-      </div>
-      <div>
-        <div id="hours" class="fs-1 fw-bold">00</div>
-        <small>Hours</small>
-      </div>
-      <div>
-        <div id="minutes" class="fs-1 fw-bold">00</div>
-        <small>Minutes</small>
-      </div>
-      <div>
-        <div id="seconds" class="fs-1 fw-bold">00</div>
-        <small>Seconds</small>
-      </div>
-    </div>
-  </div>
 </section>
 
-<!-- Countdown Script -->
-<script>
-  const updateCountdown = () => {
-    const targetDate = new Date("October 17, 2025 00:00:00").getTime();
-    const now = new Date().getTime();
-    const diff = targetDate - now;
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-    document.getElementById("days").textContent = days.toString().padStart(2, '0');
-    document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
-    document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
-    document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
-  };
-
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-</script>
-  </div>
-
-                          
-</section>
-
-<!-- Announcements Section -->
 <section class="py-5 bg-dark text-white text-center" id="portfolio">
   <div class="container">
     <h2 class="display-5 fw-bold mb-4">Chair Applications Out Now!</h2>
@@ -138,30 +217,15 @@ style="height: 400px;
 
 <div class="mt-5">
   <h2 class="display-6 fw-bold mb-4">Delegate Applications Out Soon...</h2>
-  <!-- <a href="https://forms.gle/SXVGh2Gdc8JCsAfV7" class="btn btn-lg btn-primary px-4 py-2 
-   apply-now-btn" style="border-radius: 40px;">Apply Now</a>
-  -->
 </div>
 
-<!-- Sponsor Section -->
 <div class="mt-5 text-center py-4" style="background-color: #292929; border-radius: 12px;">
   <h3 class="fw-semibold mb-3">Sponsors</h3> <h4> Coming Soon...</h4>
   <div class="d-flex justify-content-center align-items-center flex-wrap gap-4">
-    <!-- <img src="img/sodlogo.png" alt="SOD Sponsor Logo" style="max-width: 200px; width: 100%; height: auto;">
-    <img src="img/sodlogo.png" alt="SOD Sponsor Logo" style="max-width: 200px; width: 100%; height: auto;">
-    <img src="img/sodlogo.png" alt="SOD Sponsor Logo" style="max-width: 200px; width: 100%; height: auto;"> -->
-    
   </div>
 </div>
-
-
   </div> 
 </section>
-
-
-
-
-
 
 
  <footer>
@@ -174,12 +238,6 @@ style="height: 400px;
         </div>
     </footer>
 
-
-<!-- ✅ Required Bootstrap 5 JS (Make sure this is at the bottom of your page) -->
-
-
-
-    
 
     <section class="overlay-menu">
       <div class="container">
@@ -204,8 +262,6 @@ style="height: 400px;
                   <li>
                     <a href="{{ url_for('contact') }}">Contact Us</a>
                 </li>
-                  
-                 
               </ul>
               <p>We create the best Model UN Experiences for you | Summit of Diplomacy Model UN</p>
           </div>
@@ -227,7 +283,53 @@ style="height: 400px;
     <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+<script>
+  const updateCountdown = () => {
+    const targetDate = new Date("October 17, 2025 00:00:00").getTime();
+    const now = new Date().getTime();
+    const diff = targetDate - now;
 
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById("days").textContent = days.toString().padStart(2, '0');
+    document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+    document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+    document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
+  };
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const calendarDates = document.getElementById('calendarDates');
+        const firstDayOfMonth = 3;
+        const daysInMonth = 31;
+        const highlightedDates = [17, 18, 19];
+
+        for (let i = 0; i < firstDayOfMonth; i++) {
+            const emptyDate = document.createElement('div');
+            emptyDate.classList.add('empty-date');
+            calendarDates.appendChild(emptyDate);
+        }
+
+        for (let date = 1; date <= daysInMonth; date++) {
+            const dateDiv = document.createElement('div');
+            dateDiv.textContent = date;
+            
+            if (highlightedDates.includes(date)) {
+                dateDiv.classList.add('highlighted-date');
+            }
+            
+            calendarDates.appendChild(dateDiv);
+        }
+    });
+</script>
     
 </body>
 </html>
