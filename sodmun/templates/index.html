@@ -26,10 +26,10 @@
                 font-family: 'Inter', sans-serif;
                 background-color: rgba(31, 31, 31, 0.7);
                 color: #fff;
-                padding: 20px;
+                padding: 30px; /* Increased padding */
                 border-radius: 12px;
                 box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-                max-width: 400px;
+                max-width: 500px; /* Increased max-width */
                 width: 100%;
                 margin: 20px;
                 box-sizing: border-box;
@@ -37,9 +37,9 @@
                 flex-direction: column;
             }
             .calendar-header {
-                font-size: 1.5rem;
+                font-size: 1.8rem; /* Increased font size */
                 font-weight: 700;
-                margin-bottom: 20px;
+                margin-bottom: 25px; /* Increased margin */
                 text-align: center;
             }
             .calendar-days {
@@ -56,7 +56,8 @@
                 text-align: center;
             }
             .calendar-dates > div {
-                padding: 10px;
+                padding: 12px; /* Increased padding */
+                font-size: 1.3rem; /* Increased font size for readability */
                 border-radius: 8px;
                 cursor: pointer;
                 transition: background-color 0.3s ease;
@@ -105,7 +106,28 @@
             .main-content-text h1, .main-content-text p {
                 text-align: left;
             }
-            
+
+            .typewriter-container {
+                font-size: 2rem;
+                font-weight: 500;
+                white-space: nowrap;
+                overflow: hidden;
+                margin: 20px 0; /* More top and bottom space */
+                text-align: left;
+            }
+            .blinking-cursor {
+                font-weight: 100;
+                color: #ffa600;
+                -webkit-animation: 1s blink step-end infinite;
+                -moz-animation: 1s blink step-end infinite;
+                -ms-animation: 1s blink step-end infinite;
+                -o-animation: 1s blink step-end infinite;
+                animation: 1s blink step-end infinite;
+            }
+            @keyframes blink {
+                from, to { color: transparent }
+                50% { color: #ffa600 }
+            }
         </style>
     </head>
 
@@ -136,10 +158,14 @@ style="height: 400px;
         
         <div class="main-content-text w-50">
             <h1 class="display-4 fw-bold" style="font-size: 48px;">WELCOME TO <span class="fw-light">SUMMIT OF DIPLOMACY MUN</span></h1>
-            <p class="lead mt-3" style="font-size: 20px;">SODMUN III will take place from October 17–19, 2025.</p>
-            <p style="font-size: 18px;">With over 500 participants, SODMUN is the Largest Private Teen-Led MUN Conference in the MENA Region… possibly the world!</p>
-            <p style="font-size: 18px;">This website is packed with resources for delegates, chairs, and secretariat members participating in SODMUN.</p>
-            <p class="mt-4" style="font-size: 18px;">Scroll down to see the updates!</p>
+            <div class="typewriter-container">
+                <!---the added typwriter text-->
+                <span id="typewriter-text"></span><span class="blinking-cursor">|</span>
+            </div>
+            <p class="lead mt-3 mb-2" style="font-size: 18px;">SODMUN III will take place from October 17–19, 2025.</p>
+            <p style="font-size: 16px; margin-bottom: 8px;">With over 500 participants, SODMUN is the Largest Private Teen-Led MUN Conference in the MENA Region…possibly the world!</p>
+            <p style="font-size: 16px; margin-bottom: 8px;">This website is packed with resources for delegates, chairs, and secretariat members participating in SODMUN.</p>
+            <p class="mt-4" style="font-size: 16px;">Scroll down to see the updates!</p>
             
             <div class="scroll-icon mt-5">
                 <a class="scrollTo" data-scrollTo="portfolio" href="#portfolio">
@@ -149,6 +175,7 @@ style="height: 400px;
             
             <section class="py-5 text-white">
                 <h2 class="display-4 fw-bold" style="font-size: 20px;">Countdown to SODMUN III</h2>
+                <!----the calender--->
                 <div class="d-flex gap-4 fs-5 fw-medium text-uppercase">
                     <div>
                         <div id="days" class="fs-1 fw-bold">00</div>
@@ -328,6 +355,50 @@ style="height: 400px;
             
             calendarDates.appendChild(dateDiv);
         }
+    });
+</script>
+
+<script>
+    const typewriterText = document.getElementById('typewriter-text');
+    const sentences = [
+        /* random sentences (change them as needed, theyre ai generated anyways)*/
+        "The Largest Private Teen-Led MUN Conference in the MENA Region.",
+        "Redefining Diplomacy, One Resolution at a Time.",
+        "Where Leaders are Born.",
+        "Empowering the Next Generation of Diplomats."
+    ];
+    
+    let sentenceIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    
+    const type = async () => {
+        const currentSentence = sentences[sentenceIndex];
+        
+        if (isDeleting) {
+            if (charIndex > 0) {
+                typewriterText.textContent = currentSentence.substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(type, 50);
+            } else {
+                isDeleting = false;
+                sentenceIndex = (sentenceIndex + 1) % sentences.length;
+                setTimeout(type, 500);
+            }
+        } else {
+            if (charIndex < currentSentence.length) {
+                typewriterText.textContent = currentSentence.substring(0, charIndex + 1);
+                charIndex++;
+                setTimeout(type, 80);
+            } else {
+                isDeleting = true;
+                setTimeout(type, 2000);
+            }
+        }
+    };
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        type();
     });
 </script>
     
