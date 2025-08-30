@@ -13,7 +13,6 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/fontAwesome.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/light-box.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-style.css') }}">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
         <script src="{{ url_for('static', filename='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
@@ -24,10 +23,13 @@
             }
             body {
                 background-color: #1f1f1f;
+                font-weight: 200;
+                font-size: 14px;
             }
             .container-fluid {
                 padding-left: 15px;
                 padding-right: 15px;
+                
             }
             
             /* Navigation */
@@ -63,6 +65,7 @@
                 width: 50%;
                 /* Default alignment for large screens */
                 text-align: left;
+                color: #fff;
             }
             .calendar-column {
                 width: 40%;
@@ -239,16 +242,76 @@
             
             /* Footer */
             footer {
-                background-color: #111;
+                background-color: #313131;
                 color: #aaa;
                 text-align: center;
                 padding: 20px 10px;
                 font-size: 0.9rem;
             }
+
+            .py-5 {
+                color: #fff;
+            }
+
+            .countdown-numbers {
+                display: flex;
+                justify-content: center;
+                gap: 40px;
+            }
+
+            .countdown-numbers > div > div {
+                font-size: 2.5rem;
+            }
+
+            .countdown-numbers > div > small {
+                font-size: 1rem;
+            }
+
+            .main-content-text p {
+                margin-bottom: 25px;
+            }
+
+            #portfolio {
+                padding-top: 100px;
+                padding-bottom: 100px;
+            }
+
+            .sponsors-section {
+                padding: 40px 0;
+            }
+
+            h1, h2, h3, h4, h5, h6 {
+                font-weight: 300;
+            }
+
+            .main-content-text h1 {
+                font-size: 40px;
+            }
+
+            .typewriter-container {
+                font-size: 1.8rem;
+            }
+
+            .countdown-numbers > div > div {
+                font-size: 2.8rem;
+                font-weight: 500;
+            }
+
+            .countdown-numbers > div > small {
+                font-size: 0.9rem;
+            }
+
+            .apply-now-btn {
+                margin-top: 30px;
+            }
+
+            .delegate-applications-section {
+                margin-bottom: 50px;
+            }
         </style>
     </head>
 
-<body style="background-color: #1f1f1f;">
+<body>
 
     <nav>
         <div class="logo">
@@ -269,7 +332,7 @@ style="
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 120px;
+    padding-top: 80px;
     padding-bottom: 100px;">
   
     <div class="container d-flex justify-content-between align-items-start main-content-flex">
@@ -337,15 +400,14 @@ style="
 <section class="py-5 bg-dark text-white text-center" id="portfolio">
   <div class="container">
     <h2 class="display-5 fw-bold mb-4">Internship Applications Out Now! (Tech, Media, Partner Development Internships)</h2>
-    <a href="https://forms.gle/SXVGh2Gdc8JCsAfV7" class="btn btn-lg btn-primary px-4 py-2 apply-now-btn" style="border-radius: 40px;">Apply Now</a>
+    <a href="https://forms.gle/SXVGh2Gdc8JCsAfV7" class="btn btn-lg btn-primary px-4 py-2 apply-now-btn" style="border-radius: 50px;">Apply Now</a>
 
 
-<div class="mt-5">
-  <h2 class="display-6 fw-bold mb-4">Delegate Applications</h2>
-  <a href="#" class="btn btn-lg btn-primary px-4 py-2 apply-now-btn" style="border-radius: 40px;">Register Now</a>
+<div class="mt-5 delegate-applications-section">
+  <h2 class="display-6 fw-bold mb-4">Delegate Applications out soon...</h2>
 </div>
 
-<div class="mt-5 text-center py-4" style="background-color: #292929; border-radius: 12px;">
+<div class="mt-5 text-center py-4 sponsors-section" style="background-color: #292929; border-radius: 12px;">
   <h3 class="fw-semibold mb-3">Sponsors</h3> <h4> Coming Soon...</h4>
   <div class="d-flex justify-content-center align-items-center flex-wrap gap-4">
   </div>
@@ -456,29 +518,7 @@ style="
     
     <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-<script>
-  const updateCountdown = () => {
-    const targetDate = new Date("October 17, 2025 00:00:00").getTime();
-    const now = new Date().getTime();
-    const diff = targetDate - now;
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-    document.getElementById("days").textContent = days.toString().padStart(2, '0');
-    document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
-    document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
-    document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
-  };
-
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-</script>
-
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const calendarDates = document.getElementById('calendarDates');
@@ -502,50 +542,64 @@ style="
             
             calendarDates.appendChild(dateDiv);
         }
-    });
-</script>
 
-<script>
-    const typewriterText = document.getElementById('typewriter-text');
-    const sentences = [
-        /* random sentences (change them as needed, theyre ai generated anyways)*/
-        "The Largest Private Teen-Led MUN Conference in the MENA Region.",
-        "Redefining Diplomacy, One Resolution at a Time.",
-        "Where Leaders are Born.",
-        "Empowering the Next Generation of Diplomats."
-    ];
-    
-    let sentenceIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    
-    const type = async () => {
-        const currentSentence = sentences[sentenceIndex];
+        const typewriterText = document.getElementById('typewriter-text');
+        const sentences = [
+            "The Largest Teen-Led MUN Conference in the MENA Region.",
+            "Redefining Diplomacy, One Resolution at a Time.",
+            "Where Leaders are Born.",
+            "Empowering the Next Generation of Diplomats."
+        ];
         
-        if (isDeleting) {
-            if (charIndex > 0) {
-                typewriterText.textContent = currentSentence.substring(0, charIndex - 1);
-                charIndex--;
-                setTimeout(type, 50);
+        let sentenceIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        const type = async () => {
+            const currentSentence = sentences[sentenceIndex];
+            
+            if (isDeleting) {
+                if (charIndex > 0) {
+                    typewriterText.textContent = currentSentence.substring(0, charIndex - 1);
+                    charIndex--;
+                    setTimeout(type, 50);
+                } else {
+                    isDeleting = false;
+                    sentenceIndex = (sentenceIndex + 1) % sentences.length;
+                    setTimeout(type, 500);
+                }
             } else {
-                isDeleting = false;
-                sentenceIndex = (sentenceIndex + 1) % sentences.length;
-                setTimeout(type, 500);
+                if (charIndex < currentSentence.length) {
+                    typewriterText.textContent = currentSentence.substring(0, charIndex + 1);
+                    charIndex++;
+                    setTimeout(type, 80);
+                } else {
+                    isDeleting = true;
+                    setTimeout(type, 2000);
+                }
             }
-        } else {
-            if (charIndex < currentSentence.length) {
-                typewriterText.textContent = currentSentence.substring(0, charIndex + 1);
-                charIndex++;
-                setTimeout(type, 80);
-            } else {
-                isDeleting = true;
-                setTimeout(type, 2000);
-            }
-        }
-    };
-    
-    document.addEventListener('DOMContentLoaded', () => {
+        };
+        
         type();
+
+        const updateCountdown = () => {
+            const targetDate = new Date("October 17, 2025 00:00:00").getTime();
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("days").textContent = days.toString().padStart(2, '0');
+            document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
+        };
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
     });
 </script>
     
