@@ -189,7 +189,7 @@
             }
             
             /* Modal */
-            @media (max-width: 767px) {
+            /* @media (max-width: 767px) {
                 .popup-icon {
                     bottom: 20px;
                     right: 20px;
@@ -217,7 +217,7 @@
                 .modal-header h3 {
                     font-size: 24px;
                 }
-            }
+            } */
             
             /* Internship Section */
             .apply-now-btn {
@@ -368,41 +368,47 @@ style="
       <button id="modBtn" class="modal-btn"><img src="{{ url_for('static', filename='img/contact-icon.png') }}" alt=""></button>
     </div>  
 
-    <div id="modal" class="modal">
+     <div id="modal" class="modal">
+      
       <div class="modal-content">
+        
         <div class="modal-header">
           <h3 class="header-title">Say hello to <em> the SOD MUN Network</em></h3>
           <div class="close-btn"><img src="{{ url_for('static', filename='img/close_contact.png') }}" alt=""></div>    
         </div>
-        <div class="modal-body">
-          <div class="col-md-6 col-md-offset-3">
-            <form id="contact" action="https://formspree.io/f/xnnzjeqy" method="POST">
-              <input type="hidden" name="_redirect" value="index.html" />
-              <div class="row">
-                <div class="col-md-12">
-                  <fieldset>
-                    <input name="name" type="text" class="form-control" id="name" placeholder="Your name..." required="">
-                  </fieldset>
-                </div>
-                <div class="col-md-12">
-                  <fieldset>
-                    <input name="email" type="email" class="form-control" id="email" placeholder="Your email..." required="">
-                  </fieldset>
-                </div>
-                <div class="col-md-12">
-                  <fieldset>
-                    <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
-                  </fieldset>
-                </div>
-                <div class="col-md-12">
-                  <fieldset>
-                    <button type="submit" id="form-submit" class="btn">Send Message Now</button>
-                  </fieldset>
-                </div>
-              </div>
-            </form>
-          </div>
+        
+      <div class="modal-body">
+  <div class="col-md-6 col-md-offset-3">
+    <form id="contact" action="https://formspree.io/f/xnnzjeqy" method="POST">
+      
+      <input type="hidden" name="_redirect=index.html" value="index.html">
+
+      <div class="row">
+        <div class="col-md-12">
+          <fieldset>
+            <input name="name" type="text" class="form-control" id="name" placeholder="Your name..." required="">
+          </fieldset>
         </div>
+        <div class="col-md-12">
+          <fieldset>
+            <input name="email" type="email" class="form-control" id="email" placeholder="Your email..." required="">
+          </fieldset>
+        </div>
+        <div class="col-md-12">
+          <fieldset>
+            <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
+          </fieldset>
+        </div>
+        <div class="col-md-12">
+          <fieldset>
+            <button type="submit" id="form-submit" class="btn">Send Message Now</button>
+          </fieldset>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
       </div>
     </div>
 

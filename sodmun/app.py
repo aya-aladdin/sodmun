@@ -12,7 +12,84 @@ def about():
 
 @app.route('/committees')
 def committees():
-    return render_template('committees.html')
+    committees = [
+        {
+            'name': 'The First General Assembly',
+            'chairs': '???',
+            'img': 'my-img/ga1.png'
+        },
+        {
+            'name': 'United Nations Security Council',
+            'chairs': '???',
+            'img': 'my-img/sc.png'
+        },
+        {
+            'name': 'Economic & Social Council',
+            'chairs': '???',
+            'img': 'my-img/ecosoc.png'
+        },
+        {
+            'name': 'UN Human Rights Council',
+            'chairs': '???',
+            'img': 'my-img/hrc.png'
+        },
+        {
+            'name': 'UNCSW',
+            'chairs': '???',
+            'img': 'my-img/csw.png'
+        },
+        {
+            'name': 'International Court of Justice ',
+            'chairs': '???',
+            'img': 'my-img/icj.png'
+        },
+        {
+            'name': 'Futuristic Crisis Committee',
+            'chairs': '???',
+            'img': 'my-img/fcc.png'
+        },
+        {
+            'name': 'International Monetary Fund',
+            'chairs': '???',
+            'img': 'my-img/imf.png'
+        },
+        {
+            'name': 'Office on Drugs and Crime (Jr)',
+            'chairs': '???',
+            'img': 'my-img/unodc.png'
+        },
+        {
+            'name': 'Formula 1 ',
+            'chairs': '???',
+            'img': 'my-img/f1.png'
+        },
+        {
+            'name': 'Clash Royale Committee ',
+            'chairs': '???',
+            'img': 'my-img/crc.png'
+        },
+        {
+            'name': 'Organization of Music Artists ',
+            'chairs': '???',
+            'img': 'my-img/oma.png'
+        },
+        {
+            'name': 'Crisis Space Council',
+            'chairs': '???',
+            'img': 'my-img/csc.png'
+        },
+        {
+            'name': 'Council on AI Ethics',
+            'chairs': '???',
+            'img': 'my-img/caie.png'
+        },
+        {
+            'name': 'The White House',
+            'chairs': '???',
+            'img': 'my-img/twh.png'
+        }
+    ]
+    return render_template('committees.html', committees=committees)
 
 @app.route('/contact')
 def contact():
