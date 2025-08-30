@@ -15,13 +15,14 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/fontAwesome.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/light-box.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
 
         <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
         <script src="{{ url_for('static', filename='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
     </head>
 
-<body style="background-color: #1f1f1f;">
+<body>
 
     <nav>
         <div class="logo">
@@ -37,42 +38,26 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
-  .contact-image {
-    max-width: 400px;
-    width: 100%;
-    margin: 0 auto 40px auto;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-  }
-
-  .contact-image:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-  }
-</style>
-
-<div class="full-screen-portfolio" id="contact" style="background-color: #1f1f1f; color: white; padding: 120px 0 60px 0;">
+<div class="full-screen-portfolio" id="contact">
   <div class="container text-center">
-    <h2 style="font-size: 48px; margin-bottom: 20px;">Get in Touch</h2>
-    <p style="font-size: 18px; color: #ccc; margin-bottom: 40px;">
+    <h2 class="contact-title">Get in Touch</h2>
+    <p class="contact-subtitle">
       Have questions, suggestions, or want to collaborate with us? Reach out below!
     </p>
 
     <img src="{{ url_for('static', filename='img/DSC_1249.JPG') }}" alt="SODMUN" class="contact-image">
-    <div style="font-size: 20px;">
-      <p style="margin-bottom: 15px;">
-        <i class="fas fa-envelope" style="color: #f2b632; margin-right: 10px;"></i>
-        <a href="mailto:sg.sodmun@gmail.com" style="color: white; text-decoration: underline;">sg.sodmun@gmail.com</a>
+    <div class="contact-info">
+      <p>
+        <i class="fas fa-envelope contact-icon"></i>
+        <a href="mailto:sg.sodmun@gmail.com" class="contact-link">sg.sodmun@gmail.com</a>
       </p>
-           <p style="margin-bottom: 15px;">
-        <i class="fas fa-envelope" style="color: #f2b632; margin-right: 10px;"></i>
-        <a href="mailto:sg.sodmun@gmail.com" style="color: white; text-decoration: underline;">vishesh@sodmun.com</a>
+           <p>
+        <i class="fas fa-envelope contact-icon"></i>
+        <a href="mailto:sg.sodmun@gmail.com" class="contact-link">vishesh@sodmun.com</a>
       </p>
       <p>
-        <i class="fab fa-instagram" style="color: #f26bce; margin-right: 10px;"></i>
-        <a href="https://www.instagram.com/sod.mun" target="_blank" style="color: white; text-decoration: underline;">@sod.mun</a>
+        <i class="fab fa-instagram contact-icon-instagram"></i>
+        <a href="https://www.instagram.com/sod.mun" target="_blank" class="contact-link">@sod.mun</a>
       </p>
     </div>
   </div>

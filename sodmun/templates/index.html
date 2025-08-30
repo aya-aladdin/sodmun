@@ -3,25 +3,103 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>SODMUN</title>
-          <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/sodlogo.png') }}">
-
+        <title>SODMUN</title>
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/sodlogo.png') }}">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
         <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/fontAwesome.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/light-box.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-style.css') }}">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
         <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-
         <script src="{{ url_for('static', filename='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
         <style>
+            /* General Responsive Styles */
+            body, html {
+                overflow-x: hidden;
+            }
+            body {
+                background-color: #1f1f1f;
+            }
+            .container-fluid {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            
+            /* Navigation */
+            nav.scrolled {
+                background-color: #1f1f1f !important;
+            }
+            @media (max-width: 768px) {
+                nav .logo a {
+                    font-size: 24px;
+                }
+            }
+            @media (max-width: 530px) {
+                nav .logo a {
+                    font-size: 20px;
+                }
+            }
+            
+            /* Header Section */
+            .header-section {
+                height: 400px;
+                background: url(static/secteamimg/bgimg.png) no-repeat center center;
+                background-size: cover;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .main-content-flex {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+            .main-content-text {
+                width: 50%;
+                /* Default alignment for large screens */
+                text-align: left;
+            }
+            .calendar-column {
+                width: 40%;
+                display: flex;
+                justify-content: center;
+            }
+            /* Media queries for responsiveness */
+            @media (max-width: 991px) {
+                .main-content-flex {
+                    flex-direction: column;
+                    align-items: center !important;
+                    text-align: center;
+                }
+                .main-content-text, .calendar-column {
+                    width: 100% !important;
+                }
+                .main-content-text {
+                    text-align: center;
+                    margin-bottom: 40px;
+                }
+                .countdown-numbers {
+                    justify-content: center !important;
+                }
+                .typewriter-container {
+                    text-align: center;
+                }
+            }
+            @media (max-width: 767px) {
+                .main-content-text h1 {
+                    font-size: 36px;
+                }
+                .typewriter-container {
+                    font-size: 1.5rem;
+                }
+            }
+            
+            /* Calendar */
             .calendar-container {
                 font-family: 'Inter', sans-serif;
                 background-color: rgba(31, 31, 31, 0.7);
@@ -85,34 +163,15 @@
                 background-color: #fff;
                 border-radius: 50%;
             }
-
-            @media (max-width: 991px) {
-                .main-content-flex {
-                    flex-direction: column;
-                    align-items: center !important;
-                }
-                .main-content-text, .calendar-column {
-                    width: 100% !important;
-                }
-                .main-content-text {
-                    text-align: center;
-                    margin-bottom: 40px;
-                }
-                .main-content-text p {
-                    text-align: center;
-                }
-            }
             
-            .main-content-text h1, .main-content-text p {
-                text-align: left;
-            }
-
+            /* Typewriter */
             .typewriter-container {
                 font-size: 2rem;
                 font-weight: 500;
                 white-space: nowrap;
                 overflow: hidden;
                 margin: 20px 0; 
+                /* Default alignment for large screens */
                 text-align: left;
             }
             .blinking-cursor {
@@ -127,6 +186,64 @@
             @keyframes blink {
                 from, to { color: transparent }
                 50% { color: #ffa600 }
+            }
+            
+            /* Modal */
+            @media (max-width: 767px) {
+                .popup-icon {
+                    bottom: 20px;
+                    right: 20px;
+                    width: 40px;
+                    height: 40px;
+                }
+                .popup-icon .modal-btn img {
+                    width: 40px;
+                    height: 40px;
+                }
+                .modal-header h3 {
+                    font-size: 32px;
+                    margin-top: 10%;
+                }
+                .modal-body {
+                    padding: 20px;
+                }
+                .modal-body input,
+                .modal-body textarea {
+                    width: 100%;
+                    font-size: 14px;
+                }
+            }
+            @media (max-width: 530px) {
+                .modal-header h3 {
+                    font-size: 24px;
+                }
+            }
+            
+            /* Internship Section */
+            .apply-now-btn {
+                background: linear-gradient(135deg, #ffa600, #8e4500);
+                color: #0b1120;
+                border: none;
+                border-radius: 40px;
+                font-weight: 600;
+                font-size: 1.25rem;
+                box-shadow: 0 10px 25px rgba(255, 162, 0, 0.3);
+                transition: all 0.3s ease-in-out;
+            }
+            .apply-now-btn:hover {
+                transform: scale(1.06);
+                box-shadow: 0 12px 30px rgba(255, 140, 0, 0.45);
+                text-decoration: none;
+                color: #0b1120;
+            }
+            
+            /* Footer */
+            footer {
+                background-color: #111;
+                color: #aaa;
+                text-align: center;
+                padding: 20px 10px;
+                font-size: 0.9rem;
             }
         </style>
     </head>
@@ -145,14 +262,15 @@
       </div>
     </nav>
 
-<section class="vh-100 d-flex align-items-center text-white" 
-style="height: 400px;
+<section id="welcome-section" class="d-flex align-items-center text-white" 
+style="
     background: url(static/secteamimg/bgimg.png) no-repeat center center;
     background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 80px;">
+    padding-top: 120px;
+    padding-bottom: 100px;">
   
     <div class="container d-flex justify-content-between align-items-start main-content-flex">
         
@@ -167,16 +285,16 @@ style="height: 400px;
             <p style="font-size: 16px; margin-bottom: 8px;">This website is packed with resources for delegates, chairs, and secretariat members participating in SODMUN.</p>
             <p class="mt-4" style="font-size: 16px;">Scroll down to see the updates!</p>
             
-            <div class="scroll-icon mt-5">
+            <div class="scroll-icon mt-5 text-center">
                 <a class="scrollTo" data-scrollTo="portfolio" href="#portfolio">
                     <img src="{{ url_for('static', filename='img/scroll-icon.png') }}" alt="Scroll Down" style="width: 40px;">
                 </a>
             </div>
             
-            <section class="py-5 text-white">
+            <section class="py-5 text-white text-center">
                 <h2 class="display-4 fw-bold" style="font-size: 20px;">Countdown to SODMUN III</h2>
                 <!----the calender--->
-                <div class="d-flex gap-4 fs-5 fw-medium text-uppercase">
+                <div class="d-flex gap-4 fs-5 fw-medium text-uppercase countdown-numbers">
                     <div>
                         <div id="days" class="fs-1 fw-bold">00</div>
                         <small>Days</small>
@@ -221,29 +339,10 @@ style="height: 400px;
     <h2 class="display-5 fw-bold mb-4">Internship Applications Out Now! (Tech, Media, Partner Development Internships)</h2>
     <a href="https://forms.gle/SXVGh2Gdc8JCsAfV7" class="btn btn-lg btn-primary px-4 py-2 apply-now-btn" style="border-radius: 40px;">Apply Now</a>
 
-            <style>
-  .apply-now-btn {
-    background: linear-gradient(135deg, #ffa600, #8e4500);
-    color: #0b1120;
-    border: none;
-    border-radius: 40px;
-    font-weight: 600;
-    font-size: 1.25rem;
-    box-shadow: 0 10px 25px rgba(255, 162, 0, 0.3);
-    transition: all 0.3s ease-in-out;
-  }
-
-  .apply-now-btn:hover {
-    transform: scale(1.06);
-    box-shadow: 0 12px 30px rgba(255, 140, 0, 0.45);
-    text-decoration: none;
-    color: #0b1120;
-  }
-</style>
-
 
 <div class="mt-5">
-  <h2 class="display-6 fw-bold mb-4">Delegate Applications Out Soon...</h2>
+  <h2 class="display-6 fw-bold mb-4">Delegate Applications</h2>
+  <a href="#" class="btn btn-lg btn-primary px-4 py-2 apply-now-btn" style="border-radius: 40px;">Register Now</a>
 </div>
 
 <div class="mt-5 text-center py-4" style="background-color: #292929; border-radius: 12px;">
@@ -264,6 +363,48 @@ style="height: 400px;
             </div>
         </div>
     </footer>
+
+    <div class="popup-icon">
+      <button id="modBtn" class="modal-btn"><img src="{{ url_for('static', filename='img/contact-icon.png') }}" alt=""></button>
+    </div>  
+
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="header-title">Say hello to <em> the SOD MUN Network</em></h3>
+          <div class="close-btn"><img src="{{ url_for('static', filename='img/close_contact.png') }}" alt=""></div>    
+        </div>
+        <div class="modal-body">
+          <div class="col-md-6 col-md-offset-3">
+            <form id="contact" action="https://formspree.io/f/xnnzjeqy" method="POST">
+              <input type="hidden" name="_redirect" value="index.html" />
+              <div class="row">
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="name" type="text" class="form-control" id="name" placeholder="Your name..." required="">
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="email" type="email" class="form-control" id="email" placeholder="Your email..." required="">
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <button type="submit" id="form-submit" class="btn">Send Message Now</button>
+                  </fieldset>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
     <section class="overlay-menu">

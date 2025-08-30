@@ -1,0 +1,272 @@
+/* 
+    Author: Aarav Mamtani
+    Date: August 29, 2025
+    Description: Responsive styles for SODMUN website.
+*/
+
+/* General Responsive Styles */
+body, html {
+    overflow-x: hidden;
+}
+
+.home-page-body {
+    padding-top: 80px;
+}
+
+.container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Navigation */
+nav.scrolled {
+    background-color: #1f1f1f !important;
+}
+
+@media (max-width: 768px) {
+    nav .logo a {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 530px) {
+    nav .logo a {
+        font-size: 20px;
+    }
+}
+
+/* Header */
+.header-section {
+    height: 400px;
+    background: url(../secteamimg/bgimg.png) no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-content-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.main-content-text {
+    width: 50%;
+}
+
+.main-content-text h1 {
+    font-size: 48px;
+}
+
+.calendar-column {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+@media (min-width: 992px) {
+    .main-content-text h1, .main-content-text p {
+        text-align: left;
+    }
+}
+
+@media (max-width: 991px) {
+    .main-content-flex {
+        flex-direction: column;
+        align-items: center !important;
+    }
+
+    .main-content-text, .calendar-column {
+        width: 100% !important;
+    }
+
+    .main-content-text {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .main-content-text h1, .main-content-text p {
+        text-align: center;
+    }
+}
+
+@media (max-width: 767px) {
+    .main-content-text h1 {
+        font-size: 36px;
+    }
+
+    .typewriter-container {
+        font-size: 1.5rem;
+    }
+}
+
+/* Calendar */
+.calendar-container {
+    font-family: 'Inter', sans-serif;
+    background-color: rgba(31, 31, 31, 0.7);
+    color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    max-width: 500px; 
+    width: 100%;
+    margin: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-header {
+    font-size: 1.8rem; 
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.calendar-dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    text-align: center;
+}
+
+.calendar-dates > div {
+    padding: 12px;
+    font-size: 1.3rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.calendar-dates > div:hover:not(.empty-date):not(.highlighted-date) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.empty-date {
+    visibility: hidden;
+}
+
+.highlighted-date {
+    background-color: #ffa600;
+    font-weight: 700;
+    position: relative;
+    color: #fff;
+}
+
+.highlighted-date::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+/* Typewriter */
+.typewriter-container {
+    font-size: 2rem;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 20px 0; 
+}
+
+.blinking-cursor {
+    font-weight: 100;
+    color: #ffa600;
+    -webkit-animation: 1s blink step-end infinite;
+    -moz-animation: 1s blink step-end infinite;
+    -ms-animation: 1s blink step-end infinite;
+    -o-animation: 1s blink step-end infinite;
+    animation: 1s blink step-end infinite;
+}
+
+@keyframes blink {
+    from, to { color: transparent }
+    50% { color: #ffa600 }
+}
+
+/* Modal */
+@media (max-width: 767px) {
+    .popup-icon {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .popup-icon .modal-btn img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .modal-header h3 {
+        font-size: 32px;
+        margin-top: 10%;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .modal-body input,
+    .modal-body textarea {
+        width: 100%;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 530px) {
+    .modal-header h3 {
+        font-size: 24px;
+    }
+}
+
+/* Internship Section */
+.internship-section {
+    background-color: #1f1f1f;
+}
+
+.apply-now-btn {
+    background: linear-gradient(135deg, #ffa600, #8e4500);
+    color: #0b1120;
+    border: none;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 1.25rem;
+    box-shadow: 0 10px 25px rgba(255, 162, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.apply-now-btn:hover {
+    transform: scale(1.06);
+    box-shadow: 0 12px 30px rgba(255, 140, 0, 0.45);
+    text-decoration: none;
+    color: #0b1120;
+}
+
+.sponsors-section {
+    background-color: #292929;
+    border-radius: 12px;
+}
+
+/* Footer */
+footer {
+    background-color: #111;
+    color: #aaa;
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 0.9rem;
+}
