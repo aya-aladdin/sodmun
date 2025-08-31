@@ -17,7 +17,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
         <script src="{{ url_for('static', filename='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
         <style>
-            /* General Responsive Styles */
             body, html {
                 overflow-x: hidden;
             }
@@ -31,8 +30,6 @@
                 padding-right: 15px;
                 
             }
-            
-            /* Navigation */
             nav.scrolled {
                 background-color: #1f1f1f !important;
             }
@@ -47,7 +44,6 @@
                 }
             }
             
-            /* Header Section */
             .header-section {
                 height: 400px;
                 background: url(static/secteamimg/bgimg.png) no-repeat center center;
@@ -63,7 +59,6 @@
             }
             .main-content-text {
                 width: 50%;
-                /* Default alignment for large screens */
                 text-align: left;
                 color: #fff;
             }
@@ -72,7 +67,6 @@
                 display: flex;
                 justify-content: center;
             }
-            /* Media queries for responsiveness */
             @media (max-width: 991px) {
                 .main-content-flex {
                     flex-direction: column;
@@ -102,7 +96,6 @@
                 }
             }
             
-            /* Calendar */
             .calendar-container {
                 font-family: 'Inter', sans-serif;
                 background-color: rgba(31, 31, 31, 0.7);
@@ -167,14 +160,12 @@
                 border-radius: 50%;
             }
             
-            /* Typewriter */
             .typewriter-container {
                 font-size: 2rem;
                 font-weight: 500;
                 white-space: nowrap;
                 overflow: hidden;
                 margin: 20px 0; 
-                /* Default alignment for large screens */
                 text-align: left;
             }
             .blinking-cursor {
@@ -221,8 +212,6 @@
                     font-size: 24px;
                 }
             } */
-            
-            /* Internship Section */
             .apply-now-btn {
                 background: linear-gradient(135deg, #ffa600, #8e4500);
                 color: #0b1120;
@@ -240,7 +229,6 @@
                 color: #0b1120;
             }
             
-            /* Footer */
             footer {
                 background-color: #313131;
                 color: #aaa;
@@ -546,6 +534,7 @@ style="
 
         const typewriterText = document.getElementById('typewriter-text');
         const sentences = [
+            /* random sentences (you can change them as needed, theyre ai generated anyways) */
             "The Largest Teen-Led MUN Conference in the MENA Region.",
             "Redefining Diplomacy, One Resolution at a Time.",
             "Where Leaders are Born.",
