@@ -16,84 +16,12 @@
         <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
         <script src="{{ url_for('static', filename='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
         <style>
-            body, html {
-                overflow-x: hidden;
-            }
             body {
                 background-color: #1f1f1f;
                 font-weight: 200;
                 font-size: 14px;
-            }
-            .container-fluid {
-                padding-left: 15px;
-                padding-right: 15px;
-                
-            }
-            nav.scrolled {
-                background-color: #1f1f1f !important;
-            }
-            @media (max-width: 768px) {
-                nav .logo a {
-                    font-size: 24px;
-                }
-            }
-            @media (max-width: 530px) {
-                nav .logo a {
-                    font-size: 20px;
-                }
-            }
-            
-            .header-section {
-                height: 400px;
-                background: url(static/secteamimg/bgimg.png) no-repeat center center;
-                background-size: cover;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .main-content-flex {
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-start;
-            }
-            .main-content-text {
-                width: 50%;
-                text-align: left;
-                color: #fff;
-            }
-            .calendar-column {
-                width: 40%;
-                display: flex;
-                justify-content: center;
-            }
-            @media (max-width: 991px) {
-                .main-content-flex {
-                    flex-direction: column;
-                    align-items: center !important;
-                    text-align: center;
-                }
-                .main-content-text, .calendar-column {
-                    width: 100% !important;
-                }
-                .main-content-text {
-                    text-align: center;
-                    margin-bottom: 40px;
-                }
-                .countdown-numbers {
-                    justify-content: center !important;
-                }
-                .typewriter-container {
-                    text-align: center;
-                }
-            }
-            @media (max-width: 767px) {
-                .main-content-text h1 {
-                    font-size: 36px;
-                }
-                .typewriter-container {
-                    font-size: 1.5rem;
-                }
             }
             
             .calendar-container {
@@ -109,6 +37,7 @@
                 box-sizing: border-box;
                 display: flex;
                 flex-direction: column;
+                overflow: hidden;
             }
             .calendar-header {
                 font-size: 1.8rem; 
@@ -160,83 +89,6 @@
                 border-radius: 50%;
             }
             
-            .typewriter-container {
-                font-size: 2rem;
-                font-weight: 500;
-                white-space: nowrap;
-                overflow: hidden;
-                margin: 20px 0; 
-                text-align: left;
-            }
-            .blinking-cursor {
-                font-weight: 100;
-                color: #ffa600;
-                -webkit-animation: 1s blink step-end infinite;
-                -moz-animation: 1s blink step-end infinite;
-                -ms-animation: 1s blink step-end infinite;
-                -o-animation: 1s blink step-end infinite;
-                animation: 1s blink step-end infinite;
-            }
-            @keyframes blink {
-                from, to { color: transparent }
-                50% { color: #ffa600 }
-            }
-            
-            /* Modal */
-            /* @media (max-width: 767px) {
-                .popup-icon {
-                    bottom: 20px;
-                    right: 20px;
-                    width: 40px;
-                    height: 40px;
-                }
-                .popup-icon .modal-btn img {
-                    width: 40px;
-                    height: 40px;
-                }
-                .modal-header h3 {
-                    font-size: 32px;
-                    margin-top: 10%;
-                }
-                .modal-body {
-                    padding: 20px;
-                }
-                .modal-body input,
-                .modal-body textarea {
-                    width: 100%;
-                    font-size: 14px;
-                }
-            }
-            @media (max-width: 530px) {
-                .modal-header h3 {
-                    font-size: 24px;
-                }
-            } */
-            .apply-now-btn {
-                background: linear-gradient(135deg, #ffa600, #8e4500);
-                color: #0b1120;
-                border: none;
-                border-radius: 40px;
-                font-weight: 600;
-                font-size: 1.25rem;
-                box-shadow: 0 10px 25px rgba(255, 162, 0, 0.3);
-                transition: all 0.3s ease-in-out;
-            }
-            .apply-now-btn:hover {
-                transform: scale(1.06);
-                box-shadow: 0 12px 30px rgba(255, 140, 0, 0.45);
-                text-decoration: none;
-                color: #0b1120;
-            }
-            
-            footer {
-                background-color: #313131;
-                color: #aaa;
-                text-align: center;
-                padding: 20px 10px;
-                font-size: 0.9rem;
-            }
-
             .py-5 {
                 color: #fff;
             }
@@ -245,14 +97,6 @@
                 display: flex;
                 justify-content: center;
                 gap: 40px;
-            }
-
-            .countdown-numbers > div > div {
-                font-size: 2.5rem;
-            }
-
-            .countdown-numbers > div > small {
-                font-size: 1rem;
             }
 
             .main-content-text p {
@@ -272,29 +116,122 @@
                 font-weight: 300;
             }
 
-            .main-content-text h1 {
-                font-size: 40px;
-            }
-
-            .typewriter-container {
-                font-size: 1.8rem;
-            }
-
-            .countdown-numbers > div > div {
-                font-size: 2.8rem;
-                font-weight: 500;
-            }
-
-            .countdown-numbers > div > small {
-                font-size: 0.9rem;
-            }
-
             .apply-now-btn {
                 margin-top: 30px;
             }
 
             .delegate-applications-section {
                 margin-bottom: 50px;
+            }
+
+            /* Responsive adjustments */
+            @media (max-width: 767px) {
+                .main-content-flex {
+                    flex-direction: column;
+                    align-items: center !important;
+                    text-align: center;
+                    gap: 20px;
+                }
+                
+                .main-content-text {
+                    text-align: center;
+                    margin-bottom: 20px;
+                    width: 100%;
+                    max-width: 100%;
+                }
+                
+                .main-content-text h1 {
+                    font-size: 28px !important;
+                    line-height: 1.2;
+                }
+                
+                .typewriter-container {
+                    font-size: 1.6rem;
+                    text-align: center;
+                    white-space: normal;
+                    overflow: visible;
+                }
+                
+                .countdown-numbers {
+                    justify-content: center !important;
+                    gap: 15px;
+                    flex-wrap: wrap;
+                }
+                
+                .countdown-numbers > div > div {
+                    font-size: 1.8rem;
+                }
+                
+                .countdown-numbers > div > small {
+                    font-size: 0.7rem;
+                }
+                
+                .calendar-column {
+                    width: 100%;
+                    max-width: 100%;
+                    justify-content: center;
+                }
+                
+                .calendar-container {
+                    max-width: 320px;
+                    margin: 10px auto;
+                    padding: 20px;
+                    width: calc(100% - 20px);
+                }
+                
+                .calendar-header {
+                    font-size: 1.4rem;
+                }
+                
+                .calendar-dates > div {
+                    padding: 8px 4px;
+                    font-size: 1rem;
+                }
+                
+                .calendar-days {
+                    font-size: 0.9rem;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .main-content-text h1 {
+                    font-size: 24px !important;
+                }
+                
+                .typewriter-container {
+                    font-size: 1.3rem;
+                }
+                
+                .countdown-numbers {
+                    gap: 10px;
+                }
+                
+                .countdown-numbers > div > div {
+                    font-size: 1.5rem;
+                }
+                
+                .countdown-numbers > div > small {
+                    font-size: 0.6rem;
+                }
+                
+                .calendar-container {
+                    max-width: 280px;
+                    padding: 15px;
+                    margin: 10px auto;
+                }
+                
+                .calendar-header {
+                    font-size: 1.2rem;
+                }
+                
+                .calendar-dates > div {
+                    padding: 6px 2px;
+                    font-size: 0.9rem;
+                }
+                
+                .calendar-days {
+                    font-size: 0.8rem;
+                }
             }
         </style>
     </head>
@@ -326,16 +263,16 @@ style="
   
     <div class="container d-flex justify-content-between align-items-start main-content-flex">
         
-        <div class="main-content-text w-50">
-            <h1 class="display-4 fw-bold" style="font-size: 48px;">WELCOME TO <span class="fw-light">SUMMIT OF DIPLOMACY MUN</span></h1>
+        <div class="main-content-text">
+            <h1 class="display-4 fw-bold">WELCOME TO <span class="fw-light">SUMMIT OF DIPLOMACY MUN</span></h1>
             <div class="typewriter-container">
                 <!---the added typwriter text-->
                 <span id="typewriter-text"></span><span class="blinking-cursor">|</span>
             </div>
-            <p class="lead mt-3 mb-2" style="font-size: 18px;">SODMUN III will take place from October 17–19, 2025.</p>
-            <p style="font-size: 16px; margin-bottom: 8px;">With over 500 participants, SODMUN is the Largest Private Teen-Led MUN Conference in the MENA Region…possibly the world!</p>
-            <p style="font-size: 16px; margin-bottom: 8px;">This website is packed with resources for delegates, chairs, and secretariat members participating in SODMUN.</p>
-            <p class="mt-4" style="font-size: 16px;">Scroll down to see the updates!</p>
+            <p class="lead mt-3 mb-2">SODMUN III will take place from October 17–19, 2025.</p>
+            <p style="margin-bottom: 8px;">With over 500 participants, SODMUN is the Largest Private Teen-Led MUN Conference in the MENA Region…possibly the world!</p>
+            <p style="margin-bottom: 8px;">This website is packed with resources for delegates, chairs, and secretariat members participating in SODMUN.</p>
+            <p class="mt-4">Scroll down to see the updates!</p>
             
             <div class="scroll-icon mt-5 text-center">
                 <a class="scrollTo" data-scrollTo="portfolio" href="#portfolio">
@@ -344,7 +281,7 @@ style="
             </div>
             
             <section class="py-5 text-white text-center">
-                <h2 class="display-4 fw-bold" style="font-size: 20px;">Countdown to SODMUN III</h2>
+                <h2 class="display-4 fw-bold">Countdown to SODMUN III</h2>
                 <!----the calender--->
                 <div class="d-flex gap-4 fs-5 fw-medium text-uppercase countdown-numbers">
                     <div>
@@ -367,7 +304,7 @@ style="
             </section>
         </div>
 
-        <div class="calendar-column w-40 d-flex justify-content-center">
+        <div class="calendar-column d-flex justify-content-center">
             <div class="calendar-container">
                 <div class="calendar-header">October 2025</div>
                 <div class="calendar-days">

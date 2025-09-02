@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-style.css') }}">
 
         <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
 
         <script src="{{ url_for('static', filename='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
     </head>
@@ -34,9 +35,6 @@
         <span></span>
       </div>
     </nav>
-
-   
-
 
     <div class="full-screen-portfolio" id="portfolio">
         <div class="container-fluid">
@@ -67,14 +65,79 @@
     transform: scale(1.05);
   }
 
-  
-  @media only screen and (max-width: 500px) {
+  .committee-card {
+    background-color: #47474700;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .committee-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  .committee-card h3 {
+    margin-top: 15px;
+    font-size: 24px;
+    color: white;
+  }
+
+  .committee-card p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #ccc;
+  }
+
+  .committee-card a {
+    color: #00BFFF;
+    text-decoration: underline;
+  }
+
+  /* Mobile Responsive Styles */
+  @media (max-width: 767px) {
+    .committee-card {
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    .committee-card h3 {
+      font-size: 20px;
+    }
+
+    .committee-card p {
+      font-size: 14px;
+    }
+
     .sodmun-resource-button {
       font-size: 14px;
       padding: 10px 20px;
       margin-top: -20px;
       width: 90%;
       text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .committee-card {
+      padding: 12px;
+      margin-bottom: 15px;
+    }
+
+    .committee-card h3 {
+      font-size: 18px;
+    }
+
+    .committee-card p {
+      font-size: 13px;
+    }
+
+    .sodmun-resource-button {
+      font-size: 12px;
+      padding: 8px 16px;
+      margin-top: -15px;
     }
   }
 </style>
@@ -84,179 +147,32 @@
       Explore Official SODMUN Resources
 </a>
 
-
     </div>
 
-
-    
     <div class="row">
-<p style="text-align: center;"> Please note that the below 'download resources' button wont work right now as the background guides are not public / made</p>
-      
-      <div class="col-md-4 col-sm-6">
-        <div class="committee-card" style="background-color: #47474700; padding: 20px; margin-bottom: 30px; border-radius: 10px; text-align: center;">
-          <img src="{{ url_for('static', filename='my-img/ga1.png') }}" alt="GA1" style="width: 100%; border-radius: 8px;">
-          <h3 style="margin-top: 15px; font-size: 24px; color: white;">The First General Assembly</h3>
-          <p style="margin: 5px 0; font-size: 16px; color: #ccc;">Chairs: ???</p>
-          
-
-          <a href="#" style="color: #00BFFF; text-decoration: underline;">Download Resources</a>
-        </div>
-      </div>
-
-      
-      <div class="col-md-4 col-sm-6">
-        <div class="committee-card" style="background-color: #16203200; padding: 20px; margin-bottom: 30px; border-radius: 10px; text-align: center;">
-          <img src="{{ url_for('static', filename='my-img/sc.png') }}" alt="Security Council" style="width: 100%; border-radius: 8px;">
-          <h3 style="margin-top: 15px; font-size: 24px; color: white;">United Nations Security Council</h3>
-          <p style="margin: 5px 0; font-size: 16px; color: #ccc;">Chairs: ???</p>
-
-          <a href="#" style="color: #00BFFF; text-decoration: underline;">Download Resources</a>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6">
-        <div class="committee-card" style="background-color: #16203200; padding: 20px; margin-bottom: 30px; border-radius: 10px; text-align: center;">
-          <img src="{{ url_for('static', filename='my-img/ecosoc.png') }}" alt="Security Council" style="width: 100%; border-radius: 8px;">
-          <h3 style="margin-top: 15px; font-size: 24px; color: white;">Economic & Social Council</h3>
-          <p style="margin: 5px 0; font-size: 16px; color: #ccc;">Chairs: ???</p>
-
-          <a href="#" style="color: #00BFFF; text-decoration: underline;">Download Resources</a>
-        </div>
-      </div>
-
-
-      <div class="col-md-4 col-sm-6">
-        <div class="committee-card" style="background-color: #16203200; padding: 20px; margin-bottom: 30px; border-radius: 10px; text-align: center;">
-          <img src="{{ url_for('static', filename='my-img/hrc.png') }}" alt="Security Council" style="width: 100%; border-radius: 8px;">
-          <h3 style="margin-top: 15px; font-size: 24px; color: white;">UN Human Rights Council</h3>
-          <p style="margin: 5px 0; font-size: 16px; color: #ccc;">Chaisr: ???</p>
-
-          <a href="#" style="color: #00BFFF; text-decoration: underline;">Download Resources</a>
-        </div>
-      </div>
-
-       <div class="col-md-4 col-sm-6">
-        <div class="committee-card" style="background-color: #16203200; padding: 20px; margin-bottom: 30px; border-radius: 10px; text-align: center;">
-          <img src="{{ url_for('static', filename='my-img/csw.png') }}" alt="Security Council" style="width: 100%; border-radius: 8px;">
-          <h3 style="margin-top: 15px; font-size: 24px; color: white;">UNCSW</h3>
-          <p style="margin: 5px 0; font-size: 16px; color: #ccc;">Chairs: ???</p>
-
-          <a href="#" style="color: #00BFFF; text-decoration: underline;">Download Resources</a>
-        </div>
-      </div>
-
-       <div class="col-md-4 col-sm-6">
-        <div class="committee-card" style="background-color: #16203200; padding: 20px; margin-bottom: 30px; border-radius: 10px; text-align: center;">
-          <img src="{{ url_for('static', filename='my-img/icj.png') }}" alt="Security Council" style="width: 100%; border-radius: 8px;">
-          <h3 style="margin-top: 15px; font-size: 24px; color: white;">International Court of Justice </h3>
-          <p style="margin: 5px 0; font-size: 16px; color: #ccc;">Chairs: ???</p>
-
-          <a href="#" style="color: #00BFFF; text-decoration: underline;">Download Resources</a>
-        </div>
-      </div>
-
-       <div class="col-md-4 col-sm-6">
-        <div class="committee-card" style="background-color: #16203200; padding: 20px; margin-bottom: 30px; border-radius: 10px; text-align: center;">
-          <img src="{{ url_for('static', filename='my-img/fcc.png') }}" alt="Security Council" style="width: 100%; border-radius: 8px;">
-          <h3 style="margin-top: 15px; font-size: 24px; color: white;">Futuristic Crisis Committee</h3>
-          <p style="margin: 5px 0; font-size: 16px; color: #ccc;">Chairs: ???</p>
-
-          <a href="#" style="color: #00BFFF; text-decoration: underline;">Download Resources</a>
-        </div>
-      </div>
-
-        <div class="col-md-4 col-sm-6">
-        <div class="committee-card" style="background-color: #16203200; padding: 20px; margin-bottom: 30px; border-radius: 10px; text-align: center;">
-          <img src="{{ url_for('static', filename='my-img/imf.png') }}" alt="Security Council" style="width: 100%; border-radius: 8px;">
-          <h3 style="margin-top: 15px; font-size: 24px; color: white;">International Monetary Fund</h3>
-          <p style="margin: 5px 0; font-size: 16px; color: #ccc;">Chairs: ???</p>
-
-          <a href="#" style="color: #00BFFF; text-decoration: underline;">Download Resources</a>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6">
-        <div class="committee-card" style="background-color: #16203200; padding: 20px; margin-bottom: 30px; border-radius: 10px; text-align: center;">
-          <img src="{{ url_for('static', filename='my-img/unodc.png') }}" alt="Security Council" style="width: 100%; border-radius: 8px;">
-          <h3 style="margin-top: 15px; font-size: 24px; color: white;">Office on Drugs and Crime (Jr)</h3>
-          <p style="margin: 5px 0; font-size: 16px; color: #ccc;">Chairs: ???</p>
-
-          <a href="#" style="color: #00BFFF; text-decoration: underline;">Download Resources</a>
-        </div>
-      </div>
- 
-      <div class="col-md-4 col-sm-6">
-        <div class="committee-card" style="background-color: #16203200; padding: 20px; margin-bottom: 30px; border-radius: 10px; text-align: center;">
-          <img src="{{ url_for('static', filename='my-img/f1.png') }}" alt="Security Council" style="width: 100%; border-radius: 8px;">
-          <h3 style="margin-top: 15px; font-size: 24px; color: white;">Formula 1 </h3>
-          <p style="margin: 5px 0; font-size: 16px; color: #ccc;">Chairs: ???</p>
-
-          <a href="#" style="color: #00BFFF; text-decoration: underline;">Download Resources</a>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6">
-        <div class="committee-card" style="background-color: #16203200; padding: 20px; margin-bottom: 30px; border-radius: 10px; text-align: center;">
-          <img src="{{ url_for('static', filename='my-img/crc.png') }}" alt="Security Council" style="width: 100%; border-radius: 8px;">
-          <h3 style="margin-top: 15px; font-size: 24px; color: white;">Clash Royale Committee </h3>
-          <p style="margin: 5px 0; font-size: 16px; color: #ccc;">Chairs: ???</p>
-
-          <a href="#" style="color: #00BFFF; text-decoration: underline;">Download Resources</a>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6">
-        <div class="committee-card" style="background-color: #16203200; padding: 20px; margin-bottom: 30px; border-radius: 10px; text-align: center;">
-          <img src="{{ url_for('static', filename='my-img/oma.png') }}" alt="Security Council" style="width: 100%; border-radius: 8px;">
-          <h3 style="margin-top: 15px; font-size: 24px; color: white;">Organization of Music Artists </h3>
-          <p style="margin: 5px 0; font-size: 16px; color: #ccc;">Chairs: ???</p>
-
-          <a href="#" style="color: #00BFFF; text-decoration: underline;">Download Resources</a>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6">
-        <div class="committee-card" style="background-color: #16203200; padding: 20px; margin-bottom: 30px; border-radius: 10px; text-align: center;">
-          <img src="{{ url_for('static', filename='my-img/csc.png') }}" alt="Security Council" style="width: 100%; border-radius: 8px;">
-          <h3 style="margin-top: 15px; font-size: 24px; color: white;">Crisis Space Council</h3>
-          <p style="margin: 5px 0; font-size: 16px; color: #ccc;">Chairs: ??</p>
-
-          <a href="#" style="color: #00BFFF; text-decoration: underline;">Download Resources</a>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6">
-        <div class="committee-card" style="background-color: #16203200; padding: 20px; margin-bottom: 30px; border-radius: 10px; text-align: center;">
-          <img src="{{ url_for('static', filename='my-img/caie.png') }}" alt="Security Council" style="width: 100%; border-radius: 8px;">
-          <h3 style="margin-top: 15px; font-size: 24px; color: white;">Council on AI Ethics</h3>
-          <p style="margin: 5px 0; font-size: 16px; color: #ccc;">Chairs: ???</p>
-
-          <a href="#" style="color: #00BFFF; text-decoration: underline;">Download Resources</a>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6">
-        <div class="committee-card" style="background-color: #16203200; padding: 20px; margin-bottom: 30px; border-radius: 10px; text-align: center;">
-          <img src="{{ url_for('static', filename='my-img/twh.png') }}" alt="Security Council" style="width: 100%; border-radius: 8px;">
-          <h3 style="margin-top: 15px; font-size: 24px; color: white;">The White House</h3>
-          <p style="margin: 5px 0; font-size: 16px; color: #ccc;">Chairs: ???</p>
-
-          <a href="#" style="color: #00BFFF; text-decoration: underline;">Download Resources</a>
-        </div>
+      <div class="col-md-12">
+        <p style="text-align: center; color: #ccc; margin-bottom: 30px; font-size: 16px;">
+          Please note that the below 'download resources' button wont work right now as the background guides are not public / made
+        </p>
       </div>
       
-
-    
+      {% for committee in committees %}
+      <div class="col-md-4 col-sm-6">
+        <div class="committee-card" style="background-color: #16203200; padding: 20px; margin-bottom: 30px; border-radius: 10px; text-align: center;">
+          <img src="{{ url_for('static', filename=committee.img) }}" alt="{{ committee.name }}" style="width: 100%; border-radius: 8px;">
+          <h3 style="margin-top: 15px; font-size: 24px; color: white;">{{ committee.name }}</h3>
+          <p style="margin: 5px 0; font-size: 16px; color: #ccc;">Chairs: {{ committee.chairs }}</p>
+          <a href="#" style="color: #00BFFF; text-decoration: underline;">Download Resources</a>
+        </div>
+      </div>
+      {% endfor %}
+      
+    </div>
   </div>
 </div>
 
-
-            
-            
-           
         </div>
     </div>
-
 
     <footer>
         <div class="container-fluid">
@@ -268,13 +184,10 @@
         </div>
     </footer>
 
-
-      
     <div class="popup-icon">
       <button id="modBtn" class="modal-btn"><img src="{{ url_for('static', filename='img/contact-icon.png') }}" alt=""></button>
     </div>  
 
-    
     <div id="modal" class="modal">
       
       <div class="modal-content">
@@ -319,8 +232,6 @@
       </div>
     </div>
 
-    
-
     <section class="overlay-menu">
       <div class="container">
         <div class="row">
@@ -344,9 +255,6 @@
                   <li>
                     <a href="{{ url_for('contact') }}">Contact Us</a>
                 </li>
-                  
-                  
-                 
               </ul>
               <p>We create the best Model UN Experiences for you | Summit of Diplomacy Model UN</p>
           </div>
@@ -368,6 +276,5 @@
     <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
-    
 </body>
 </html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Page Not Found - SODMUN</title>
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/sodlogo.png') }}">
+        <meta name="description" content="Page not found - SODMUN">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/fontAwesome.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/light-box.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-style.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+
+        <script src="{{ url_for('static', filename='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
+        
+        <style>
+            body {
+                background-color: #1f1f1f;
+                font-weight: 200;
+                font-size: 14px;
+                color: #fff;
+            }
+            
+            .error-container {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 20px;
+            }
+            
+            .error-content {
+                max-width: 600px;
+                background-color: rgba(31, 31, 31, 0.8);
+                padding: 60px 40px;
+                border-radius: 20px;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .error-number {
+                font-size: 8rem;
+                font-weight: 900;
+                color: #ffa600;
+                margin-bottom: 20px;
+                text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+                line-height: 1;
+            }
+            
+            .error-title {
+                font-size: 2.5rem;
+                font-weight: 700;
+                margin-bottom: 20px;
+                color: #fff;
+            }
+            
+            .error-message {
+                font-size: 1.2rem;
+                margin-bottom: 40px;
+                color: #ccc;
+                line-height: 1.6;
+            }
+            
+            .error-actions {
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .btn-home {
+                background-color: #ffa600;
+                color: #1f1f1f;
+                padding: 15px 30px;
+                border-radius: 50px;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 1.1rem;
+                transition: all 0.3s ease;
+                border: 2px solid #ffa600;
+            }
+            
+            .btn-home:hover {
+                background-color: transparent;
+                color: #ffa600;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(255, 166, 0, 0.3);
+            }
+            
+            .btn-back {
+                background-color: transparent;
+                color: #fff;
+                padding: 15px 30px;
+                border-radius: 50px;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 1.1rem;
+                transition: all 0.3s ease;
+                border: 2px solid #fff;
+            }
+            
+            .btn-back:hover {
+                background-color: #fff;
+                color: #1f1f1f;
+                transform: translateY(-2px);
+            }
+            
+            .error-logo {
+                margin-bottom: 30px;
+            }
+            
+            .error-logo img {
+                width: 80px;
+                height: auto;
+            }
+            
+            .error-logo .logo-text {
+                font-size: 1.8rem;
+                font-weight: 700;
+                color: #ffa600;
+                margin-left: 10px;
+            }
+            
+            @media (max-width: 768px) {
+                .error-content {
+                    padding: 40px 20px;
+                }
+                
+                .error-number {
+                    font-size: 6rem;
+                }
+                
+                .error-title {
+                    font-size: 2rem;
+                }
+                
+                .error-message {
+                    font-size: 1.1rem;
+                }
+                
+                .error-actions {
+                    flex-direction: column;
+                    align-items: center;
+                }
+                
+                .btn-home, .btn-back {
+                    width: 100%;
+                    max-width: 250px;
+                }
+            }
+            
+            @media (max-width: 480px) {
+                .error-number {
+                    font-size: 5rem;
+                }
+                
+                .error-title {
+                    font-size: 1.8rem;
+                }
+                
+                .error-message {
+                    font-size: 1rem;
+                }
+            }
+        </style>
+    </head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='img/sodlogo.png') }}" alt="SODMUN Logo" />
+               SOD<em>MUN</em></a>
+        </div>
+    </nav>
+
+    <div class="error-container">
+        <div class="error-content">
+            <div class="error-logo">
+                <img src="{{ url_for('static', filename='img/sodlogo.png') }}" alt="SODMUN Logo">
+                <span class="logo-text">SODMUN</span>
+            </div>
+            
+            <div class="error-number">404</div>
+            
+            <h1 class="error-title">Page Not Found</h1>
+            
+            <p class="error-message">
+                The Point of parliamentary enquiry you've requested for was not recognised by the chairs!
+                Try raising your placard again.
+            </p>
+            
+            <div class="error-actions">
+                <a href="{{ url_for('index') }}" class="btn-home">
+                    <i class="fa fa-home"></i> Return Home
+                </a>
+                <button onclick="history.back()" class="btn-back">
+                    <i class="fa fa-arrow-left"></i> Go Back
+                </button>
+            </div>
+            
+            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                <p style="color: #888; font-size: 0.9rem;">
+                    If you believe this is an error, please contact our technical team.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/vendor/jquery-1.11.2.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

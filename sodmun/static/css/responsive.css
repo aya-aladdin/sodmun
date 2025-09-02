@@ -27,15 +27,25 @@ nav.scrolled {
     nav .logo a {
         font-size: 24px;
     }
+    
+    nav .logo img {
+        height: 40px;
+        margin-right: 8px;
+    }
 }
 
 @media (max-width: 530px) {
     nav .logo a {
         font-size: 20px;
     }
+    
+    nav .logo img {
+        height: 35px;
+        margin-right: 6px;
+    }
 }
 
-/* Header */
+/* Header Section */
 .header-section {
     height: 400px;
     background: url(../secteamimg/bgimg.png) no-repeat center center;
@@ -52,52 +62,349 @@ nav.scrolled {
 }
 
 .main-content-text {
-    width: 50%;
-}
-
-.main-content-text h1 {
-    font-size: 48px;
+    flex: 1;
+    text-align: left;
+    color: #fff;
+    max-width: 60%;
 }
 
 .calendar-column {
-    width: 40%;
+    flex: 0 0 auto;
     display: flex;
     justify-content: center;
+    max-width: 35%;
 }
 
-@media (min-width: 992px) {
-    .main-content-text h1, .main-content-text p {
-        text-align: left;
+/* Large Desktop */
+@media (min-width: 1200px) {
+    .main-content-text h1 {
+        font-size: 48px;
+    }
+    
+    .typewriter-container {
+        font-size: 2.4rem;
+    }
+    
+    .countdown-numbers > div > div {
+        font-size: 2.8rem;
     }
 }
 
-@media (max-width: 991px) {
+/* Desktop */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .main-content-text h1 {
+        font-size: 42px;
+    }
+    
+    .typewriter-container {
+        font-size: 2.2rem;
+    }
+    
+    .countdown-numbers > div > div {
+        font-size: 2.5rem;
+    }
+}
+
+/* Tablet Landscape */
+@media (min-width: 768px) and (max-width: 991px) {
     .main-content-flex {
         flex-direction: column;
         align-items: center !important;
+        text-align: center;
     }
-
+    
     .main-content-text, .calendar-column {
         width: 100% !important;
     }
-
+    
     .main-content-text {
         text-align: center;
         margin-bottom: 40px;
     }
-
-    .main-content-text h1, .main-content-text p {
-        text-align: center;
-    }
-}
-
-@media (max-width: 767px) {
+    
     .main-content-text h1 {
         font-size: 36px;
     }
+    
+    .typewriter-container {
+        font-size: 1.9rem;
+        text-align: center;
+    }
+    
+    .countdown-numbers {
+        justify-content: center !important;
+    }
+    
+    .countdown-numbers > div > div {
+        font-size: 2.2rem;
+    }
+    
+    .calendar-container {
+        max-width: 400px;
+        margin: 20px auto;
+    }
+}
 
+/* Tablet Portrait */
+@media (max-width: 767px) {
+    .main-content-flex {
+        flex-direction: column;
+        align-items: center !important;
+        text-align: center;
+    }
+    
+    .main-content-text, .calendar-column {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .main-content-text {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .main-content-text h1 {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+    
+    .typewriter-container {
+        font-size: 1.7rem;
+        text-align: center;
+        white-space: normal;
+        overflow: visible;
+    }
+    
+    .countdown-numbers {
+        justify-content: center !important;
+        gap: 20px;
+    }
+    
+    .countdown-numbers > div > div {
+        font-size: 2rem;
+    }
+    
+    .countdown-numbers > div > small {
+        font-size: 0.8rem;
+    }
+    
+    .calendar-container {
+        max-width: 320px;
+        margin: 20px auto;
+        padding: 20px;
+        width: calc(100% - 20px);
+        overflow: hidden;
+    }
+    
+    .calendar-header {
+        font-size: 1.5rem;
+    }
+    
+    .calendar-dates > div {
+        padding: 8px;
+        font-size: 1.1rem;
+    }
+    
+    /* Modal adjustments */
+    .popup-icon {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .popup-icon .modal-btn img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .modal-header h3 {
+        font-size: 28px;
+        margin-top: 10%;
+    }
+    
+    .modal-body {
+        padding: 20px;
+    }
+    
+    .modal-body input,
+    .modal-body textarea {
+        width: 100%;
+        font-size: 14px;
+    }
+}
+
+/* Mobile Large */
+@media (max-width: 575px) {
+    .main-content-text h1 {
+        font-size: 28px;
+    }
+    
     .typewriter-container {
         font-size: 1.5rem;
+    }
+    
+    .countdown-numbers {
+        gap: 15px;
+    }
+    
+    .countdown-numbers > div > div {
+        font-size: 1.8rem;
+    }
+    
+    .countdown-numbers > div > small {
+        font-size: 0.7rem;
+    }
+    
+    .calendar-container {
+        max-width: 300px;
+        padding: 15px;
+    }
+    
+    .calendar-header {
+        font-size: 1.3rem;
+    }
+    
+    .calendar-dates > div {
+        padding: 6px;
+        font-size: 1rem;
+    }
+    
+    .calendar-days {
+        font-size: 0.9rem;
+    }
+}
+
+/* Mobile Small */
+@media (max-width: 480px) {
+    .main-content-text h1 {
+        font-size: 24px;
+    }
+    
+    .typewriter-container {
+        font-size: 1.4rem;
+    }
+    
+    .countdown-numbers {
+        gap: 10px;
+    }
+    
+    .countdown-numbers > div > div {
+        font-size: 1.6rem;
+    }
+    
+    .countdown-numbers > div > small {
+        font-size: 0.6rem;
+    }
+    
+    .calendar-container {
+        max-width: 280px;
+        padding: 12px;
+        width: calc(100% - 20px);
+        overflow: hidden;
+    }
+    
+    .calendar-header {
+        font-size: 1.2rem;
+    }
+    
+    .calendar-dates > div {
+        padding: 5px;
+        font-size: 0.9rem;
+    }
+    
+    .calendar-days {
+        font-size: 0.8rem;
+    }
+    
+    .modal-header h3 {
+        font-size: 24px;
+    }
+}
+
+/* Mobile Extra Small */
+@media (max-width: 360px) {
+    .main-content-text h1 {
+        font-size: 22px;
+    }
+    
+    .typewriter-container {
+        font-size: 1.3rem;
+    }
+    
+    .countdown-numbers {
+        gap: 8px;
+    }
+    
+    .countdown-numbers > div > div {
+        font-size: 1.4rem;
+    }
+    
+    .countdown-numbers > div > small {
+        font-size: 0.5rem;
+    }
+    
+    .calendar-container {
+        max-width: 260px;
+        padding: 10px;
+        width: calc(100% - 20px);
+        overflow: hidden;
+    }
+    
+    .calendar-header {
+        font-size: 1.1rem;
+    }
+    
+    .calendar-dates > div {
+        padding: 4px;
+        font-size: 0.8rem;
+    }
+    
+    .calendar-days {
+        font-size: 0.7rem;
+    }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 320px) {
+    .main-content-text h1 {
+        font-size: 20px;
+    }
+    
+    .typewriter-container {
+        font-size: 1.2rem;
+    }
+    
+    .countdown-numbers {
+        gap: 6px;
+    }
+    
+    .countdown-numbers > div > div {
+        font-size: 1.2rem;
+    }
+    
+    .countdown-numbers > div > small {
+        font-size: 0.5rem;
+    }
+    
+    .calendar-container {
+        max-width: 240px;
+        padding: 8px;
+        width: calc(100% - 16px);
+        overflow: hidden;
+    }
+    
+    .calendar-header {
+        font-size: 1rem;
+    }
+    
+    .calendar-dates > div {
+        padding: 3px 1px;
+        font-size: 0.7rem;
+    }
+    
+    .calendar-days {
+        font-size: 0.7rem;
     }
 }
 
@@ -115,6 +422,7 @@ nav.scrolled {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
 
 .calendar-header {
@@ -257,6 +565,50 @@ nav.scrolled {
     color: #0b1120;
 }
 
+    /* Mobile button adjustments */
+    @media (max-width: 767px) {
+        .apply-now-btn {
+            font-size: 1.1rem;
+            padding: 12px 24px;
+        }
+
+        /* Fix calendar overflow on mobile */
+        .calendar-container {
+            max-width: 100% !important;
+            width: 100% !important;
+            margin: 20px 10px !important;
+            padding: 15px !important;
+            overflow-x: hidden !important;
+        }
+
+        .calendar-days,
+        .calendar-dates {
+            grid-template-columns: repeat(7, 1fr) !important;
+            gap: 4px !important;
+            width: 100% !important;
+        }
+
+        .calendar-days > div,
+        .calendar-dates > div {
+            font-size: 0.9rem !important;
+            padding: 6px 2px !important;
+            min-width: 0 !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+        }
+
+        .calendar-header {
+            font-size: 1.3rem !important;
+        }
+    }
+
+@media (max-width: 480px) {
+    .apply-now-btn {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
+
 .sponsors-section {
     background-color: #292929;
     border-radius: 12px;
@@ -269,4 +621,190 @@ footer {
     text-align: center;
     padding: 20px 10px;
     font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+    footer {
+        font-size: 0.8rem;
+        padding: 15px 8px;
+    }
+}
+
+/* Additional mobile improvements */
+@media (max-width: 767px) {
+    .py-5 {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+    
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .display-5 {
+        font-size: 1.75rem;
+    }
+    
+    .display-6 {
+        font-size: 1.5rem;
+    }
+    
+    .lead {
+        font-size: 1rem;
+    }
+    
+    .btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    /* Secretariat page improvements */
+    .secretariat-heading .heading-content h1 {
+        font-size: 28px;
+        margin-top: 120px;
+        padding: 15px 30px;
+    }
+
+    .portfolio-item {
+        margin-bottom: 20px;
+    }
+
+    .portfolio-item .thumb {
+        border-radius: 8px;
+    }
+
+    .portfolio-item img {
+        border-radius: 8px;
+    }
+
+    /* Desktop: Maintain original grid layout */
+    @media (min-width: 768px) {
+        .secretariat-portfolio .col-md-4 {
+            width: 33.333333% !important;
+            float: left !important;
+            display: block !important;
+        }
+        
+        .secretariat-portfolio .col-sm-6 {
+            width: 50% !important;
+            float: left !important;
+            display: block !important;
+        }
+        
+        .secretariat-portfolio .portfolio-item {
+            width: 100% !important;
+            max-width: none !important;
+            margin: 0 0 30px 0 !important;
+        }
+        
+        .secretariat-portfolio .row {
+            margin: 0 -15px !important;
+        }
+        
+        .secretariat-portfolio .col-md-4,
+        .secretariat-portfolio .col-sm-6 {
+            padding: 0 15px !important;
+            margin-bottom: 0 !important;
+        }
+    }
+
+    /* Large Desktop: Ensure perfect 3-column grid */
+    @media (min-width: 992px) {
+        .secretariat-portfolio .col-md-4 {
+            width: 33.333333% !important;
+        }
+        
+        .secretariat-portfolio .portfolio-item {
+            margin-bottom: 30px !important;
+        }
+    }
+
+    /* Extra Large Desktop: Maintain grid spacing */
+    @media (min-width: 1200px) {
+        .secretariat-portfolio .container-fluid {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    }
+
+    /* Mobile: Stack secretariat members vertically */
+    .secretariat-portfolio .col-md-4,
+    .secretariat-portfolio .col-sm-6 {
+        width: 100% !important;
+        float: none !important;
+        display: block !important;
+    }
+
+    .secretariat-portfolio .portfolio-item {
+        width: 100% !important;
+        max-width: 400px !important;
+        margin: 0 auto 30px auto !important;
+    }
+
+    /* Ensure proper spacing between secretariat members on mobile */
+    .secretariat-portfolio .row {
+        margin: 0 !important;
+    }
+
+    .secretariat-portfolio .col-md-4,
+    .secretariat-portfolio .col-sm-6 {
+        padding: 0 15px !important;
+        margin-bottom: 20px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+    
+    .display-4 {
+        font-size: 1.75rem;
+    }
+    
+    .display-5 {
+        font-size: 1.5rem;
+    }
+    
+    .display-6 {
+        font-size: 1.25rem;
+    }
+    
+    .lead {
+        font-size: 0.9rem;
+    }
+    
+    .btn-lg {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    /* Extra small mobile: Optimize secretariat layout */
+    .secretariat-portfolio .portfolio-item {
+        max-width: 350px !important;
+        margin: 0 auto 25px auto !important;
+    }
+
+    .secretariat-portfolio .col-md-4,
+    .secretariat-portfolio .col-sm-6 {
+        padding: 0 10px !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* Extra small mobile: Further optimize calendar */
+    .calendar-container {
+        margin: 15px 5px !important;
+        padding: 10px !important;
+    }
+
+    .calendar-days > div,
+    .calendar-dates > div {
+        font-size: 0.8rem !important;
+        padding: 4px 1px !important;
+    }
+
+    .calendar-header {
+        font-size: 1.2rem !important;
+    }
 }
