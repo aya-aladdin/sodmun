@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sodmun Help Bot</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: radial-gradient(circle at top, #2e3238, #1c1f23);
+  color: #ffffff;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.chat-container {
+  width: 100%;
+  max-width: 720px;
+  height: 100vh;
+  background-color: #2a2d31;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.chat-header {
+  font-family: 'Sora', sans-serif;
+  background: linear-gradient(90deg, #f39c12, #e67e22);
+  padding: 14px;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  opacity: 0;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 8px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background-color: #1c1f23;
+}
+
+.message {
+  padding: 8px 12px;
+  border-radius: 12px;
+  max-width: 90%;
+  line-height: 1.4;
+  font-weight: 400;
+  opacity: 0;
+  word-wrap: break-word;
+}
+
+.user-message {
+  align-self: flex-end;
+  background-color: #f39c12;
+  color: #000;
+  font-weight: 600;
+  box-shadow: 0px 0px 10px rgba(243, 156, 18, 0.5);
+}
+
+.bot-message {
+  align-self: flex-start;
+  background-color: #3a3d41;
+  color: #f1f1f1;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.15);
+}
+
+.chat-input {
+  display: flex;
+  border-top: 1px solid #3a3d41;
+  background-color: #2a2d31;
+  padding: 6px;
+  opacity: 0;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  background: #1c1f23;
+  color: #f1f1f1;
+  border-radius: 8px;
+  margin-right: 6px;
+}
+
+.chat-input input:focus {
+  box-shadow: 0px 0px 10px rgba(243, 156, 18, 0.6);
+}
+
+.chat-input button {
+  padding: 12px 18px;
+  background: linear-gradient(180deg, #f39c12, #e67e22);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0px 0px 15px rgba(243, 156, 18, 0.5);
+}
+
+.chat-input button:active { transform: scale(0.95); }
+
+.bot-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.bot-buttons button {
+  background-color: #f39c12;
+  color: #000;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 0px 5px rgba(243,156,18,0.4);
+}
+
+@media (max-width:600px){
+  .chat-header{font-size:1.4rem;}
+  .chat-input input{font-size:0.9rem;}
+  .message{max-width:95%; padding:6px 10px;}
+  .chat-input button{padding:10px 14px;}
+}
+</style>
+</head>
+<body>
+<div class="chat-container" id="chatContainer">
+  <div class="chat-header" id="chatHeader">SODMUN Helpbot</div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-input" id="chatInputBox">
+    <input type="text" id="userInput" placeholder="Type your message..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script>
+const chatMessages = document.getElementById("chatMessages");
+
+anime({ targets:'#chatContainer', opacity:[0,1], scale:[0.9,1], duration:800, easing:'easeOutExpo' });
+anime({ targets:'#chatHeader', opacity:[0,1], translateY:[-40,0], delay:400, duration:800, easing:'easeOutBounce' });
+anime({ targets:'#chatInputBox', opacity:[0,1], translateY:[40,0], delay:1000, duration:800, easing:'easeOutExpo' });
+
+const SODMUN_INFO_TEXT = `
+SODMUN III (Oct 17–19, 2025) is the Largest Private Teen-Led MUN Conference with 500+ participants.
+About: Made by MUNers for MUNers, helping delegates, chairs, and secretariat grow.
+Team: Vishesh Shah, Andre Chitongco, Rayan Hussain, Vedant Katara, Aarav Mamtani, Pranav Nair.
+Committees: GA1, UN Security Council, Economic & Social Council, UNHRC, UNCSW, ICJ, IMF, F1, Clash Royale Committee, Organization of Music Artists, Crisis Space Council, Council on AI Ethics, The White House.
+Contact: sg.sodmun@gmail.com, vishesh@sodmun.com, Instagram @sod.mun
+`;
+
+window.onload = () => {
+  setTimeout(()=>{
+    addMessageAnimated("👋 Hi! I’m your Sodmun Help Bot. Ask me anything about SODMUN.", "bot-message", [
+      {label:"Committees",url:"https://sodmun.com/committees.html"},
+      {label:"Registration",url:"https://sodmun.com/index.html"},
+      {label:"Contact",url:"https://sodmun.com/contact.html"}
+    ]);
+  },1200);
+};
+
+async function sendMessage(){
+  const input = document.getElementById("userInput");
+  const message = input.value.trim();
+  if(!message) return;
+  addMessage(message,"user-message");
+  input.value="";
+
+  const typingIndicator = document.createElement("div");
+  typingIndicator.className="message bot-message";
+  typingIndicator.textContent="thinking way faster than humans...";
+  chatMessages.appendChild(typingIndicator);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+
+  try{
+    const response = await fetch("/chat", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({message})
+    });
+
+    const data = await response.json();
+    chatMessages.removeChild(typingIndicator);
+    addMessageAnimated(data.reply,"bot-message", [
+      {label:"Committees",url:"https://sodmun.com/committees.html"},
+      {label:"Registration",url:"https://sodmun.com/index.html"},
+      {label:"Contact",url:"https://sodmun.com/contact.html"}
+    ]);
+
+  }catch(err){
+    chatMessages.removeChild(typingIndicator);
+    addMessage("⚠️ Error connecting to server","bot-message");
+    console.error(err);
+  }
+}
+
+function addMessage(text,className){
+  const msgDiv = document.createElement("div");
+  msgDiv.className=`message ${className}`;
+  msgDiv.textContent=text;
+  chatMessages.appendChild(msgDiv);
+  chatMessages.scrollTop=chatMessages.scrollHeight;
+  anime({targets:msgDiv,opacity:[0,1],translateX:className==="user-message"?[20,0]:[-20,0],duration:400,easing:'easeOutExpo'});
+}
+
+function addMessageAnimated(text,className,buttons=[]){
+  const msgDiv=document.createElement("div");
+  msgDiv.className=`message ${className}`;
+  msgDiv.style.opacity="1";
+  chatMessages.appendChild(msgDiv);
+
+  const chars=Array.from(text);
+  chars.forEach((char,i)=>{
+    const span=document.createElement("span");
+    span.textContent=char;
+    span.style.opacity="0";
+    msgDiv.appendChild(span);
+    anime({targets:span,opacity:[0,1],delay:i*15,duration:150,easing:"easeOutQuad",
+      complete:()=>{ chatMessages.scrollTop=chatMessages.scrollHeight; }
+    });
+  });
+
+  if(buttons.length>0){
+    const btnContainer=document.createElement("div");
+    btnContainer.className="bot-buttons";
+    buttons.forEach(b=>{
+      const btn=document.createElement("button");
+      btn.textContent=b.label;
+      btn.onclick=()=>window.open(b.url,"_blank");
+      btnContainer.appendChild(btn);
+    });
+    msgDiv.appendChild(btnContainer);
+  }
+}
+</script>
+</body>
+</html>
