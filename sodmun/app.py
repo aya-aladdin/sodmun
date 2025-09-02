@@ -19,6 +19,11 @@ def committees():
             'img': 'my-img/ga1.png'
         },
         {
+            'name': 'United Nations Human Rights Council',
+            'chairs': '???',
+            'img': 'my-img/hrc.png'
+        },
+        {
             'name': 'United Nations Security Council',
             'chairs': '???',
             'img': 'my-img/sc.png'
@@ -29,19 +34,29 @@ def committees():
             'img': 'my-img/ecosoc.png'
         },
         {
-            'name': 'UN Human Rights Council',
-            'chairs': '???',
-            'img': 'my-img/hrc.png'
-        },
-        {
             'name': 'UNCSW',
             'chairs': '???',
             'img': 'my-img/csw.png'
         },
         {
-            'name': 'International Court of Justice ',
+            'name': 'International Court of Justice',
             'chairs': '???',
             'img': 'my-img/icj.png'
+        },
+        {
+            'name': 'UN Environment Programme',
+            'chairs': '???',
+            'img': 'my-img/sc.png'
+        },
+        {
+            'name': 'UN Development Programme',
+            'chairs': '???',
+            'img': 'my-img/ecosoc.png'
+        },
+        {
+            'name': 'UNESCO',
+            'chairs': '???',
+            'img': 'my-img/caie.png'
         },
         {
             'name': 'Futuristic Crisis Committee',
@@ -59,17 +74,17 @@ def committees():
             'img': 'my-img/unodc.png'
         },
         {
-            'name': 'Formula 1 ',
+            'name': 'Formula 1',
             'chairs': '???',
             'img': 'my-img/f1.png'
         },
         {
-            'name': 'Clash Royale Committee ',
+            'name': 'Clash Royale Committee',
             'chairs': '???',
             'img': 'my-img/crc.png'
         },
         {
-            'name': 'Organization of Music Artists ',
+            'name': 'Organization of Music Artists',
             'chairs': '???',
             'img': 'my-img/oma.png'
         },
@@ -102,6 +117,10 @@ def incubator():
 @app.route('/secretariat')
 def secretariat():
     return render_template('secretariat.html')
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)
