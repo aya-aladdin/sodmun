@@ -1,4 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
+import openai
+import os
 
 app = Flask(__name__)
 
@@ -105,3 +107,47 @@ def secretariat():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)
+
+app = Flask(__name__)
+
+openai.api_key = os.getenv("OPENAI_API_KEY", "FINAL_KEY_SHOULD_GO_HERE")
+
+SODMUN_INFO_TEXT = """
+SODMUN III (Oct 17–19, 2025) is the Largest Private Teen-Led MUN Conference with 500+ participants.
+About: Made by MUNers for MUNers, helping delegates, chairs, and secretariat grow.
+Team: Vishesh Shah, Andre Chitongco, Rayan Hussain, Vedant Katara, Aarav Mamtani, Pranav Nair.
+Committees: GA1, UN Security Council, Economic & Social Council, UNHRC, UNCSW, ICJ, IMF, F1, Clash Royale Committee, Organization of Music Artists, Crisis Space Council, Council on AI Ethics, The White House.
+Contact: sg.sodmun@gmail.com, vishesh@sodmun.com, Instagram @sod.mun, delegate applications and registration are out click below
+"""
+
+@app.route("/")
+def index():
+    return render_template("index.html")  
+
+@app.route("/chat", methods=["POST"])
+def chat():
+    data = request.get_json()
+    user_message = data.get("message", "").strip()
+
+    if not user_message:
+        return jsonify({"reply": "⚠️ Please type a message."})
+
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-4o-mini",
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant trained on SODMUN information."},
+                {"role": "user", "content": SODMUN_INFO_TEXT + "\nUser asks: " + user_message}
+            ],
+            max_tokens=400
+        )
+
+        reply = response.choices[0].message.content
+        return jsonify({"reply": reply})
+
+    except Exception as e:
+        print("Error:", e)
+        return jsonify({"reply": "⚠️ Error connecting to OpenAI API."})
+
+if __name__ == "__main__":
+    app.run(debug=True)
