@@ -1,8 +1,17 @@
 from flask import Flask, render_template, request, jsonify
-import openai
 import os
+import json
+import urllib.request
 
 app = Flask(__name__)
+
+SODMUN_INFO_TEXT = """
+SODMUN III (Oct 17–19, 2025) is the Largest Private Teen-Led MUN Conference with 500+ participants.
+About: Made by MUNers for MUNers, helping delegates, chairs, and secretariat grow.
+Team: Vishesh Shah, Andre Chitongco, Rayan Hussain, Vedant Katara, Aarav Mamtani, Pranav Nair.
+Committees: GA1, UN Security Council, Economic & Social Council, UNHRC, UNCSW, ICJ, IMF, F1, Clash Royale Committee, Organization of Music Artists, Crisis Space Council, Council on AI Ethics, The White House.
+Contact: sg.sodmun@gmail.com, vishesh@sodmun.com, Instagram @sod.mun, delegate applications and registration are out click below
+"""
 
 @app.route('/')
 def index():
@@ -120,28 +129,9 @@ def incubator():
 def secretariat():
     return render_template('secretariat.html')
 
-@app.errorhandler(404)
-def page_not_found(error):
-    return render_template('404.html'), 404
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000, debug=True)
-
-app = Flask(__name__)
-
-openai.api_key = os.getenv("OPENAI_API_KEY", "FINAL_KEY_SHOULD_GO_HERE")
-
-SODMUN_INFO_TEXT = """
-SODMUN III (Oct 17–19, 2025) is the Largest Private Teen-Led MUN Conference with 500+ participants.
-About: Made by MUNers for MUNers, helping delegates, chairs, and secretariat grow.
-Team: Vishesh Shah, Andre Chitongco, Rayan Hussain, Vedant Katara, Aarav Mamtani, Pranav Nair.
-Committees: GA1, UN Security Council, Economic & Social Council, UNHRC, UNCSW, ICJ, IMF, F1, Clash Royale Committee, Organization of Music Artists, Crisis Space Council, Council on AI Ethics, The White House.
-Contact: sg.sodmun@gmail.com, vishesh@sodmun.com, Instagram @sod.mun, delegate applications and registration are out click below
-"""
-
-@app.route("/")
-def index():
-    return render_template("index.html")  
+@app.route('/helpbot')
+def helpbot():
+    return render_template('helpbot.html')
 
 @app.route("/chat", methods=["POST"])
 def chat():
@@ -152,21 +142,34 @@ def chat():
         return jsonify({"reply": "⚠️ Please type a message."})
 
     try:
-        response = openai.ChatCompletion.create(
-            model="gpt-4o-mini",
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant trained on SODMUN information."},
-                {"role": "user", "content": SODMUN_INFO_TEXT + "\nUser asks: " + user_message}
-            ],
-            max_tokens=400
+        req = urllib.request.Request(
+            "https://ai.hackclub.com/chat/completions",
+            data=json.dumps({
+                "model": "gpt-4o-mini",
+                "messages": [
+                    {"role": "system", "content": "You are a helpful assistant trained on SODMUN information."},
+                    {"role": "user", "content": SODMUN_INFO_TEXT + "\nUser asks: " + user_message}
+                ],
+                "max_tokens": 400
+            }).encode('utf-8'),
+            headers={'Content-Type': 'application/json'}
         )
+        with urllib.request.urlopen(req) as response:
+            if response.status == 200:
+                response_data = json.loads(response.read().decode('utf-8'))
+                reply = response_data['choices'][0]['message']['content']
+                return jsonify({"reply": reply})
+            else:
+                return jsonify({"reply": "⚠️ Error connecting to Hack Club AI API."})
 
-        reply = response.choices[0].message.content
-        return jsonify({"reply": reply})
 
     except Exception as e:
         print("Error:", e)
-        return jsonify({"reply": "⚠️ Error connecting to OpenAI API."})
+        return jsonify({"reply": "⚠️ Error connecting to Hack Club AI API."})
 
-if __name__ == "__main__":
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404
+
+if __name__ == '__main__':
     app.run(debug=True)

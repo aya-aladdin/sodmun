@@ -6,6 +6,7 @@
 <title>SODDY the SODMUN Help Bot</title>
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <style>
 body {
   font-family: 'Kanit', sans-serif;
@@ -244,54 +245,61 @@ async function sendMessage(){
   }
 }
 
-function addMessage(text,className){
-  const msgDiv = document.createElement("div");
-  msgDiv.className=`message ${className}`;
-  msgDiv.textContent=text;
-  
-  const timeSpan = document.createElement("span");
-  timeSpan.className = "message-time";
-  timeSpan.textContent = getCurrentTime();
-  msgDiv.appendChild(timeSpan);
+function addMessage(text, className) {
+    const msgDiv = document.createElement("div");
+    msgDiv.className = `message ${className}`;
+    msgDiv.innerHTML = marked.parse(text);
 
-  chatMessages.appendChild(msgDiv);
-  chatMessages.scrollTop=chatMessages.scrollHeight;
-  anime({targets:msgDiv,opacity:[0,1],translateX:className==="user-message"?[20,0]:[-20,0],duration:400,easing:'easeOutExpo'});
+    const timeSpan = document.createElement("span");
+    timeSpan.className = "message-time";
+    timeSpan.textContent = getCurrentTime();
+    msgDiv.appendChild(timeSpan);
+
+    chatMessages.appendChild(msgDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    anime({
+        targets: msgDiv,
+        opacity: [0, 1],
+        translateX: className === "user-message" ? [20, 0] : [-20, 0],
+        duration: 400,
+        easing: 'easeOutExpo'
+    });
 }
 
-function addMessageAnimated(text,className,buttons=[]){
-  const msgDiv=document.createElement("div");
-  msgDiv.className=`message ${className}`;
-  msgDiv.style.opacity="1";
-  chatMessages.appendChild(msgDiv);
+function addMessageAnimated(text, className, buttons = []) {
+    const msgDiv = document.createElement("div");
+    msgDiv.className = `message ${className}`;
+    msgDiv.style.opacity = "1";
+    
+    msgDiv.innerHTML = marked.parse(text);
 
-  const chars=Array.from(text);
-  chars.forEach((char,i)=>{
-    const span=document.createElement("span");
-    span.textContent=char;
-    span.style.opacity="0";
-    msgDiv.appendChild(span);
-    anime({targets:span,opacity:[0,1],delay:i*15,duration:150,easing:"easeOutQuad",
-      complete:()=>{ chatMessages.scrollTop=chatMessages.scrollHeight; }
+    chatMessages.appendChild(msgDiv);
+
+    const timeSpan = document.createElement("span");
+    timeSpan.className = "message-time";
+    timeSpan.textContent = getCurrentTime();
+    msgDiv.appendChild(timeSpan);
+
+    if (buttons.length > 0) {
+        const btnContainer = document.createElement("div");
+        btnContainer.className = "bot-buttons";
+        buttons.forEach(b => {
+            const btn = document.createElement("button");
+            btn.textContent = b.label;
+            btn.onclick = () => window.open(b.url, "_blank");
+            btnContainer.appendChild(btn);
+        });
+        msgDiv.appendChild(btnContainer);
+    }
+    
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    anime({
+        targets: msgDiv,
+        opacity: [0, 1],
+        translateY: [-20, 0],
+        duration: 400,
+        easing: 'easeOutExpo'
     });
-  });
-
-  const timeSpan = document.createElement("span");
-  timeSpan.className = "message-time";
-  timeSpan.textContent = getCurrentTime();
-  msgDiv.appendChild(timeSpan);
-
-  if(buttons.length>0){
-    const btnContainer=document.createElement("div");
-    btnContainer.className="bot-buttons";
-    buttons.forEach(b=>{
-      const btn=document.createElement("button");
-      btn.textContent=b.label;
-      btn.onclick=()=>window.open(b.url,"_blank");
-      btnContainer.appendChild(btn);
-    });
-    msgDiv.appendChild(btnContainer);
-  }
 }
 </script>
 </body>
