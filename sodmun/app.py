@@ -13,6 +13,7 @@ Committees: GA1, UN Security Council, Economic & Social Council, UNHRC, UNCSW, I
 Contact: sg.sodmun@gmail.com, vishesh@sodmun.com, Instagram @sod.mun, delegate applications and registration are out click below
 """
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -147,8 +148,14 @@ def chat():
             data=json.dumps({
                 "model": "gpt-4o-mini",
                 "messages": [
-                    {"role": "system", "content": "You are a helpful assistant trained on SODMUN information."},
-                    {"role": "user", "content": SODMUN_INFO_TEXT + "\nUser asks: " + user_message}
+                    {
+                        "role": "system",
+                        "content": "You are SODDY, a helpful assistant for SODMUN (summit of diplomacy mun). Your responses must be concise, straightforward, and delivered as the final answer only. Do not include any reasoning, thoughts, or conversational filler. Your responses should be in Markdown format. Always include the registration link: [Delegate Applications & Registration](https://sodmun.com/index.html)"
+                    },
+                    {
+                        "role": "user",
+                        "content": SODMUN_INFO_TEXT + "\n" + user_message
+                    }
                 ],
                 "max_tokens": 400
             }).encode('utf-8'),
@@ -158,10 +165,10 @@ def chat():
             if response.status == 200:
                 response_data = json.loads(response.read().decode('utf-8'))
                 reply = response_data['choices'][0]['message']['content']
+                
                 return jsonify({"reply": reply})
             else:
                 return jsonify({"reply": "⚠️ Error connecting to Hack Club AI API."})
-
 
     except Exception as e:
         print("Error:", e)
@@ -172,4 +179,4 @@ def page_not_found(error):
     return render_template('404.html'), 404
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=8000, debug=True)
