@@ -16,6 +16,8 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/light-box.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-style.css') }}">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 
         <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
@@ -31,30 +33,160 @@
       overflow-x: hidden;
     }
 
-    .coming-soon {
-      min-height:95vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 40px 20px;
+    .partner-events-section {
+      min-height: 95vh;
+      padding: 60px 20px;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('{{ url_for("static", filename="img/partner.jpg") }}');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
     }
 
-    .coming-soon img.logo {
-      width: 100px;
-      margin-bottom: 30px;
+    .partner-events-section img.logo {
+      width: 120px;
+      margin: 0 auto 30px auto;
+      display: block;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
     }
 
-    .coming-soon h1 {
+    .partner-events-section h1 {
       font-size: 3rem;
       font-weight: 600;
       margin-bottom: 20px;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     }
 
-    .coming-soon p {
+    .partner-events-section .lead {
       font-size: 1.2rem;
       font-weight: 300;
+      color: #ffffff;
+      margin-bottom: 40px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .partner-card {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      height: 100%;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .partner-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .gold-card {
+      border-color: #ffd700;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+    }
+
+    .silver-card {
+      border-color: #c0c0c0;
+      box-shadow: 0 0 20px rgba(192, 192, 192, 0.2);
+    }
+
+    .bronze-card {
+      border-color: #cd7f32;
+      box-shadow: 0 0 20px rgba(205, 127, 50, 0.2);
+    }
+
+    .partner-tier h3 {
+      color: #ffffff;
+      font-weight: 600;
+      margin-top: 15px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .gold-icon {
+      color: #ffd700;
+    }
+
+    .silver-icon {
+      color: #c0c0c0;
+    }
+
+    .bronze-icon {
+      color: #cd7f32;
+    }
+
+    .partner-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      min-height: 60px;
+    }
+
+    .partner-logo {
+      max-width: 70px;
+      max-height: 70px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 8px;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .partner-logo:hover {
+      transform: scale(1.1);
+    }
+
+    .event-description {
+      margin-bottom: 15px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .event-title {
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .event-desc {
       color: #cccccc;
+      font-size: 0.9rem;
+      margin: 0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .card-text {
+      color: #ffffff;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    .fade-in-left {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+
+    .fade-in-right {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+
+    .scale-in {
+      opacity: 0;
+      transform: scale(0.8);
     }
 
     footer {
@@ -83,12 +215,89 @@
       </div>
     </nav>
 
-  <div class="coming-soon">
-    <img src="{{ url_for('static', filename='img/sodlogo.png') }}" alt="SODMUN Logo" class="logo" />
-    <h1>Coming Soon...</h1>
-    <p>This Section of the Summit of Diplomacy website is under development. Stay tuned!</p>
-     <a href="{{ url_for('index') }}" class="btn btn-lg btn-primary px-4 py-2 
-   apply-now-btn" style="border-radius: 40px;">Go back to home &lt;--</a>
+  <div class="partner-events-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center mb-5">
+          <img src="{{ url_for('static', filename='img/sodlogo.png') }}" alt="SODMUN Logo" class="logo scale-in" />
+          <h1 class="mt-4 mb-3 fade-in-up">Partner Events</h1>
+          <p class="lead fade-in-up">Discover our prestigious partner events and collaborations</p>
+        </div>
+      </div>
+      
+      <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card partner-card gold-card fade-in-left">
+            <div class="card-body text-center">
+              <div class="partner-tier mb-3">
+                <i class="fas fa-crown fa-2x gold-icon"></i>
+                <h3 class="card-title">Gold</h3>
+              </div>
+              <div class="partner-logos">
+                <img src="{{ url_for('static', filename='img/sodlogo.png') }}" alt="Partner Logo" class="partner-logo">
+                <img src="{{ url_for('static', filename='img/sodlogo.png') }}" alt="Partner Logo" class="partner-logo">
+                <img src="{{ url_for('static', filename='img/sodlogo.png') }}" alt="Partner Logo" class="partner-logo">
+                <img src="{{ url_for('static', filename='img/sodlogo.png') }}" alt="Partner Logo" class="partner-logo">
+                <img src="{{ url_for('static', filename='img/sodlogo.png') }}" alt="Partner Logo" class="partner-logo">
+                <img src="{{ url_for('static', filename='img/sodlogo.png') }}" alt="Partner Logo" class="partner-logo">
+              </div>
+              <div class="event-description">
+                <h5 class="event-title">SODMUN 2025</h5>
+                <p class="event-desc">A model UN event</p>
+              </div>
+              <div class="event-description">
+                <h5 class="event-title">Diplomatic Summit</h5>
+                <p class="event-desc">International diplomacy conference</p>
+              </div>
+              <p class="card-text">Our premium partners who share our vision for excellence in Model UN</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card partner-card silver-card fade-in-up">
+            <div class="card-body text-center">
+              <div class="partner-tier mb-3">
+                <i class="fas fa-medal fa-2x silver-icon"></i>
+                <h3 class="card-title">Silver</h3>
+              </div>
+              <div class="partner-logos">
+                <img src="{{ url_for('static', filename='img/sodlogo.png') }}" alt="Partner Logo" class="partner-logo">
+                <img src="{{ url_for('static', filename='img/sodlogo.png') }}" alt="Partner Logo" class="partner-logo">
+                <img src="{{ url_for('static', filename='img/sodlogo.png') }}" alt="Partner Logo" class="partner-logo">
+                <img src="{{ url_for('static', filename='img/sodlogo.png') }}" alt="Partner Logo" class="partner-logo">
+              </div>
+              <div class="event-description">
+                <h5 class="event-title">Regional MUN Conference</h5>
+                <p class="event-desc">Brief description of the event</p>
+              </div>
+              <p class="card-text">Valued partners committed to fostering diplomatic excellence</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card partner-card bronze-card fade-in-right">
+            <div class="card-body text-center">
+              <div class="partner-tier mb-3">
+                <i class="fas fa-award fa-2x bronze-icon"></i>
+                <h3 class="card-title">Bronze</h3>
+              </div>
+              <div class="partner-logos">
+                <img src="{{ url_for('static', filename='img/sodlogo.png') }}" alt="Partner Logo" class="partner-logo">
+                <img src="{{ url_for('static', filename='img/sodlogo.png') }}" alt="Partner Logo" class="partner-logo">
+                <img src="{{ url_for('static', filename='img/sodlogo.png') }}" alt="Partner Logo" class="partner-logo">
+              </div>
+              <div class="event-description">
+                <h5 class="event-title">Community MUN Workshop</h5>
+                <p class="event-desc">Brief description of the event</p>
+              </div>
+              <p class="card-text">Supporting partners who believe in the power of youth diplomacy</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
                  <style>
   .apply-now-btn {
@@ -129,7 +338,7 @@
                       <a href="{{ url_for('about') }}">About Us</a>
                   </li>
                     <li>
-                    <a href="{{ url_for('incubator') }}">Incubator Program</a>
+                    <a href="{{ url_for('incubator') }}">Partner Events</a>
                 </li>
                   <li>
                       <a href="{{ url_for('secretariat') }}">Secretariat</a>
@@ -163,5 +372,83 @@
     
     <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            anime({
+                targets: '.logo',
+                opacity: [0, 1],
+                scale: [0.8, 1],
+                duration: 800,
+                easing: 'easeOutElastic(1, .8)',
+                delay: 100
+            });
+
+            anime({
+                targets: '.fade-in-up',
+                opacity: [0, 1],
+                translateY: [50, 0],
+                duration: 600,
+                easing: 'easeOutExpo',
+                delay: anime.stagger(100, {start: 300})
+            });
+
+            anime({
+                targets: '.fade-in-left',
+                opacity: [0, 1],
+                translateX: [-50, 0],
+                duration: 600,
+                easing: 'easeOutExpo',
+                delay: 500
+            });
+
+            anime({
+                targets: '.fade-in-up',
+                opacity: [0, 1],
+                translateY: [50, 0],
+                duration: 600,
+                easing: 'easeOutExpo',
+                delay: 600
+            });
+
+            anime({
+                targets: '.fade-in-right',
+                opacity: [0, 1],
+                translateX: [50, 0],
+                duration: 600,
+                easing: 'easeOutExpo',
+                delay: 700
+            });
+
+            document.querySelectorAll('.partner-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    anime({
+                        targets: this,
+                        scale: 1.05,
+                        duration: 300,
+                        easing: 'easeOutQuad'
+                    });
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    anime({
+                        targets: this,
+                        scale: 1,
+                        duration: 300,
+                        easing: 'easeOutQuad'
+                    });
+                });
+            });
+
+            anime({
+                targets: '.gold-icon, .silver-icon, .bronze-icon',
+                translateY: [0, -10, 0],
+                duration: 2000,
+                easing: 'easeInOutSine',
+                loop: true,
+                delay: anime.stagger(200, {start: 1000})
+            });
+        });
+    </script>
 </body>
 </html>
