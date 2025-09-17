@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SODDY the SODMUN Help Bot</title>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+body {
+  font-family: 'Kanit', sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+
+  background: 
+    linear-gradient(rgba(40,40,40,0.5), rgba(20,20,20,0.6)), 
+    url("sodbackchatbot.jpg") no-repeat center center/cover;
+}
+
+.chat-container {
+  width: 100%;
+  max-width: 720px;
+  height: 90vh; 
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: scale(0.9);
+  background: linear-gradient(180deg, rgba(10,10,10,1), rgba(25,25,25,1), rgba(15,15,15,1));
+  border-radius: 23px;  
+  border: 2px solid #f39c12; 
+  box-shadow: 0 0 15px rgba(243,156,18,0.5), 0 0 30px rgba(243,156,18,0.3);
+}
+.chat-header {
+  font-family: 'Kanit', sans-serif;
+  background: linear-gradient(90deg, #f39c12, #e67e22);
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 3rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  opacity: 0;
+  color: #fff;
+  border-top-left-radius: 20px;  
+  border-top-right-radius: 20px;
+}
+
+.chat-input {
+  display: flex;
+  border-top: 2px solid #555;
+  background-color: rgba(28,31,35,0.95);
+  padding: 12px;
+  opacity: 0;
+  align-items: center;
+  border-bottom-left-radius: 20px;  
+  border-bottom-right-radius: 20px;
+}
+.chat-header img {
+  height: 75px;
+  width: auto;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 11px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background-color: transparent;
+}
+
+.message {
+  font-family: 'Inter', sans-serif; 
+  padding: 10px 10px;
+  border-radius: 12px;
+  max-width: 90%;
+  line-height: 1.5;
+  font-weight: 400;
+  opacity: 0;
+  word-wrap: break-word;
+  border: 1px solid #f39c12;
+  position: relative;
+}
+
+.user-message {
+  align-self: flex-end;
+  background-color: #f49c12;
+  color: #000;
+  font-weight: 500;
+  box-shadow: 0px 0px 10px rgba(243, 156, 18, 0.5);
+}
+
+.bot-message {
+  align-self: flex-start;
+  background-color: #000000;
+  color: #ffffff;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+}
+
+.message-time {
+  display: block;
+  font-size: 0.7rem;
+  color: #ffffff;
+  margin-top: 4px;
+  text-align: right;
+  font-family: 'Inter', sans-serif;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #666;
+  outline: none;
+  font-size: 0.95rem;
+  background: #1c1f23;
+  color: #f1f1f1;
+  border-radius: 8px;
+  margin-right: 6px;
+}
+
+.chat-input input:focus {
+  box-shadow: 0px 0px 8px rgba(160,160,160,0.6);
+}
+
+.chat-input button {
+  width: 52px;
+  height: 45px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #f39c12, #e67e22);
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chat-input button:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 12px rgba(243,156,18,0.6);
+}
+
+.bot-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.bot-buttons button {
+  font-family: 'Inter', sans-serif;
+  background-color: #f39c12;
+  color: #ffffff;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #e67e22;
+  cursor: pointer;
+  box-shadow: 0px 0px 5px rgba(243,156,18,0.4);
+}
+</style>
+</head>
+<body>
+<div class="chat-container" id="chatContainer">
+  <div class="chat-header" id="chatHeader">
+    <img src="sodlogo.png" alt="Logo" />
+    SODDY
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-input" id="chatInputBox">
+    <input type="text" id="userInput" placeholder="Type your message..." />
+    <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script>
+const chatMessages = document.getElementById("chatMessages");
+
+anime({ targets:'#chatContainer', opacity:[0,1], scale:[0.9,1], duration:800, easing:'easeOutExpo' });
+anime({ targets:'#chatHeader', opacity:[0,1], translateY:[-40,0], delay:400, duration:800, easing:'easeOutBounce' });
+anime({ targets:'#chatInputBox', opacity:[0,1], translateY:[40,0], delay:1000, duration:800, easing:'easeOutExpo' });
+
+function getCurrentTime() {
+  const d = new Date();
+  return d.getHours().toString().padStart(2,'0') + ":" + d.getMinutes().toString().padStart(2,'0');
+}
+
+window.onload = () => {
+  setTimeout(()=>{
+    addMessageAnimated(
+      "👋 Hi! I’m SODDY, your SODMUN Help Bot! I’m here to help you with everything about SODMUN – committees, registration, schedules, rules, and contacts. Ask me anything and I’ll guide you to the right information so your SODMUN experience is smooth and easy!", 
+      "bot-message", 
+      [
+        {label:"Committees", url:"https://sodmun.com/committees.html", icon:"fa-users"},
+        {label:"Registration", url:"https://docs.google.com/forms/d/e/1FAIpQLSe4qf7x8vCUWmHUlltHD70SPZMwxK3bhGkcfFcxGNX6dd7OSg/viewform", icon:"fa-pencil-alt"},
+        {label:"Contact", url:"https://sodmun.com/contact.html", icon:"fa-envelope"}
+      ]
+    );
+  },1200);
+};
+
+async function sendMessage(){
+  const input = document.getElementById("userInput");
+  const message = input.value.trim();
+  if(!message) return;
+  addMessage(message,"user-message");
+  input.value="";
+
+  const typingIndicator = document.createElement("div");
+  typingIndicator.className="message bot-message";
+  typingIndicator.textContent="thinking way faster than humans...";
+  chatMessages.appendChild(typingIndicator);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+
+  try{
+    const response = await fetch("/chat", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({message})
+    });
+
+    const data = await response.json();
+    chatMessages.removeChild(typingIndicator);
+    addMessageAnimated(data.reply,"bot-message", [
+      {label:"Committees",url:"https://sodmun.com/committees.html"},
+      {label:"Registration",url:"https://sodmun.com/index.html"},
+      {label:"Contact",url:"https://sodmun.com/contact.html"}
+    ]);
+
+  }catch(err){
+    chatMessages.removeChild(typingIndicator);
+    addMessage("⚠️ Error connecting to server","bot-message");
+    console.error(err);
+  }
+}
+
+function addMessage(text, className) {
+    const msgDiv = document.createElement("div");
+    msgDiv.className = `message ${className}`;
+    msgDiv.innerHTML = marked.parse(text);
+
+    const timeSpan = document.createElement("span");
+    timeSpan.className = "message-time";
+    timeSpan.textContent = getCurrentTime();
+    msgDiv.appendChild(timeSpan);
+
+    chatMessages.appendChild(msgDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    anime({
+        targets: msgDiv,
+        opacity: [0, 1],
+        translateX: className === "user-message" ? [20, 0] : [-20, 0],
+        duration: 400,
+        easing: 'easeOutExpo'
+    });
+}
+
+function addMessageAnimated(text, className, buttons = []) {
+    const msgDiv = document.createElement("div");
+    msgDiv.className = `message ${className}`;
+    msgDiv.style.opacity = "1";
+    
+    msgDiv.innerHTML = marked.parse(text);
+
+    chatMessages.appendChild(msgDiv);
+
+    const timeSpan = document.createElement("span");
+    timeSpan.className = "message-time";
+    timeSpan.textContent = getCurrentTime();
+    msgDiv.appendChild(timeSpan);
+
+    if (buttons.length > 0) {
+        const btnContainer = document.createElement("div");
+        btnContainer.className = "bot-buttons";
+        buttons.forEach(b => {
+            const btn = document.createElement("button");
+            btn.textContent = b.label;
+            btn.onclick = () => window.open(b.url, "_blank");
+            btnContainer.appendChild(btn);
+        });
+        msgDiv.appendChild(btnContainer);
+    }
+    
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    anime({
+        targets: msgDiv,
+        opacity: [0, 1],
+        translateY: [-20, 0],
+        duration: 400,
+        easing: 'easeOutExpo'
+    });
+}
+</script>
+</body>
+</html>

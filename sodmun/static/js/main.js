@@ -12,8 +12,7 @@ jQuery(document).ready(function($) {
           
           // open modal when click on open modal button 
           modBtn.on('click', function() {
-            modal.css('display', 'block');
-            modContent.removeClass('modal-animated-out').addClass('modal-animated-in');
+            window.location.href = '/helpbot';
           });
           
           // close modal when click on close button or somewhere out the modal content 
