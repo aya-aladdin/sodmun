@@ -154,6 +154,13 @@
             }
 
             /* Responsive adjustments */
+            @media (max-width: 1024px) {
+                .venue-images {
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+
             @media (max-width: 767px) {
                 #welcome-section {
                     padding-top: 120px !important;
@@ -223,11 +230,6 @@
                 
                 .calendar-days {
                     font-size: 0.9rem;
-                }
-
-                .venue-images {
-                  flex-direction: column;
-                  align-items: center;
                 }
 
                 .venue-images .venue-image {
@@ -385,7 +387,7 @@ style="
 </div>
 
 <div class="mt-3 text-center py-4 venue-section" style="background-color: #292929; border-radius: 12px; margin: 20px;">
-    <div style="padding: 10px;">
+    <div style="padding: 20px;">
         <h3 class="fw-semibold mb-3">Venue</h3>
         <h4 class="venue-name">Canadian University Dubai</h4>
         <p class="venue-location">Near Dubai Mall / Financial Centre Metro Station</p>
@@ -394,14 +396,14 @@ style="
             <img src="static/img/cud-campus.jpeg" alt="Canadian University Dubai" class="venue-image">
         </div>
     </div>
-</div>
+</div> 
 </section>
 
 
  <footer>
         <div class="container-fluid">
             <div class="col-md-12">
-                <p style="padding: 20px;">Copyright &copy; 2025 SODMUN
+                <p>Copyright &copy; 2025 SODMUN
     
     | Designed by Aarav Mamtani</p>
             </div>
