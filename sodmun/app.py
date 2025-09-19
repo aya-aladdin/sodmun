@@ -6,7 +6,7 @@ import urllib.request
 app = Flask(__name__)
 
 SODMUN_INFO_TEXT = """
-SODMUN III (Oct 17–19, 2025) is the Largest Private Teen-Led MUN Conference with 500+ participants.
+SODMUN III (December 5-7, 2025) is the Largest Private Teen-Led MUN Conference with 500+ participants.
 About: Made by MUNers for MUNers, helping delegates, chairs, and secretariat grow.
 Team: Vishesh Shah, Andre Chitongco, Rayan Hussain, Vedant Katara, Aarav Mamtani, Pranav Nair.
 Committees: GA1, UN Security Council, Economic & Social Council, UNHRC, UNCSW, ICJ, IMF, F1, Clash Royale Committee, Organization of Music Artists, Crisis Space Council, Council on AI Ethics, The White House.
